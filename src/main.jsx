@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { Menu, Search, ShoppingBag, UserRound, X } from 'lucide-react'
 import './styles.css'
 
-const imagePath = (name) => `/images/${name}`
+const imagePath = (name) => `/images/optimized/${name}`
 
 const img = {
   hero: imagePath('banner-img.JPG'),
@@ -370,7 +370,7 @@ function ConsultationWidget() {
 
             <div className="grid md:grid-cols-[0.8fr_1.2fr]">
               <div className="hidden border-r border-ink md:block">
-                <img src={img.intro} alt="Interior styling with ceramic objects" className="h-full min-h-[640px] w-full object-cover" />
+                <img src={img.intro} alt="Interior styling with ceramic objects" loading="lazy" decoding="async" className="h-full min-h-[640px] w-full object-cover" />
               </div>
               <div className="px-5 py-8 pt-14 sm:px-8 sm:pt-8">
                 <p className="mb-4 text-[11px] tracking-[0.24em] text-olive">DESIGN CONCIERGE</p>
@@ -499,7 +499,7 @@ function Header() {
 function Hero() {
   return (
     <section className="relative min-h-[calc(100svh-57px)] overflow-hidden border-b border-ink sm:min-h-[calc(100svh-66px)]">
-      <img src={img.hero} alt="Iconica Design Studio interior project" className="absolute inset-0 h-full w-full object-cover" />
+      <img src={img.hero} alt="Iconica Design Studio interior project" decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-black/20" />
       <div className="relative mx-auto flex min-h-[calc(100svh-57px)] max-w-[1480px] items-end px-5 pb-9 pl-7 sm:min-h-[calc(100svh-66px)] sm:px-6 sm:pl-9 md:px-7 md:pb-16">
         <div className="image-copy max-w-[680px] text-white">
@@ -518,7 +518,7 @@ function FeatureRow() {
   return (
     <section className="grid border-b border-ink md:grid-cols-2">
       <div className="min-h-[320px] border-b border-ink md:min-h-[420px] md:border-b-0 md:border-r">
-        <img src={img.bowl} alt="Iconica Design Studio project detail" className="h-full w-full object-cover" />
+        <img src={img.bowl} alt="Iconica Design Studio project detail" loading="lazy" decoding="async" className="h-full w-full object-cover" />
       </div>
       <div className="flex items-center bg-porcelain px-5 py-12 sm:px-6 md:px-14 md:py-16">
         <div className="max-w-[540px]">
@@ -541,7 +541,7 @@ function FeatureRow() {
 function ImageCallout({ image, title, text, align = 'left', href = '#' }) {
   return (
     <section className="relative min-h-[340px] border-b border-ink md:min-h-[520px]">
-      <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover" />
+      <img src={image} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/25" />
       <div className={`relative mx-auto flex min-h-[340px] max-w-[1480px] items-end px-5 py-10 pl-7 sm:px-6 sm:pl-9 md:min-h-[520px] md:px-7 md:py-12 ${align === 'right' ? 'justify-end' : ''}`}>
         <a href={href} className="image-copy max-w-[520px] text-white">
@@ -572,7 +572,7 @@ function FeaturedProducts() {
           {featuredProducts.map((product) => (
             <article key={product.name} className="group">
               <a href={`/shop/${product.slug}`} className="block aspect-[4/5] overflow-hidden border border-ink/15 bg-bone">
-                <img src={product.image} alt={product.name} className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+                <img src={product.image} alt={product.name} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
               </a>
               <div className="pt-5">
                 <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{product.category}</p>
@@ -607,7 +607,7 @@ function Press() {
               className="group grid overflow-hidden border border-ink/15 bg-porcelain text-left transition duration-300 hover:bg-ink hover:text-porcelain sm:grid-cols-[0.48fr_0.52fr]"
             >
               <span className="block aspect-[4/3] overflow-hidden bg-white sm:aspect-auto">
-                <img src={feature.image} alt={feature.publication} className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+                <img src={feature.image} alt={feature.publication} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
               </span>
               <span className="flex min-h-[150px] flex-col justify-center p-5">
                 <span className="block text-[10px] uppercase tracking-[0.18em] text-olive transition duration-300 group-hover:text-porcelain/70">{feature.type}</span>
@@ -647,7 +647,7 @@ function PressPage() {
 
       <section className="grid border-b border-ink bg-porcelain md:grid-cols-2">
         <a href={leadFeature.url} target="_blank" rel="noreferrer" className="group min-h-[320px] overflow-hidden border-b border-ink sm:min-h-[420px] md:min-h-[620px] md:border-b-0 md:border-r">
-          <img src={leadFeature.image} alt={leadFeature.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+          <img src={leadFeature.image} alt={leadFeature.title} decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
         </a>
         <div className="flex items-center px-6 py-16 md:px-14">
           <div className="max-w-[560px]">
@@ -676,7 +676,7 @@ function PressPage() {
             {pressFeatures.map((feature) => (
               <article key={feature.url} className="group grid border border-ink/15 bg-porcelain md:grid-cols-[0.85fr_1.15fr]">
                 <a href={feature.url} target="_blank" rel="noreferrer" className="flex min-h-[260px] items-center justify-center overflow-hidden border-b border-ink/15 bg-white md:border-b-0 md:border-r">
-                  <img src={feature.image} alt={feature.publication} className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+                  <img src={feature.image} alt={feature.publication} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
                 </a>
                 <div className="flex flex-col justify-between p-7">
                   <div>
@@ -743,7 +743,7 @@ function ShopPage() {
             {featuredProducts.map((product) => (
               <article key={product.name} className="group bg-porcelain">
                 <a href={`/shop/${product.slug}`} className="block aspect-[4/5] overflow-hidden border border-ink/15 bg-bone">
-                  <img src={product.image} alt={product.name} className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+                  <img src={product.image} alt={product.name} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
                 </a>
                 <div className="border-x border-b border-ink/15 p-5">
                   <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{product.category}</p>
@@ -787,7 +787,7 @@ function ShopPage() {
             {visibleProducts.map((product) => (
               <article key={product.name} className="group grid border border-ink/15 bg-bone sm:grid-cols-[0.9fr_1.1fr]">
                 <a href={`/shop/${product.slug}`} className="block aspect-square overflow-hidden border-b border-ink/15 bg-porcelain sm:border-b-0 sm:border-r">
-                  <img src={product.image} alt={product.name} className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+                  <img src={product.image} alt={product.name} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
                 </a>
                 <div className="flex flex-col justify-between p-6">
                   <div>
@@ -837,7 +837,7 @@ function ProductPage({ product }) {
     <>
       <section className="grid border-b border-ink bg-porcelain lg:grid-cols-[1.05fr_0.95fr]">
         <div className="min-h-[320px] border-b border-ink bg-bone sm:min-h-[420px] lg:min-h-[720px] lg:border-b-0 lg:border-r">
-          <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
+          <img src={product.image} alt={product.name} decoding="async" fetchPriority="high" className="h-full w-full object-cover" />
         </div>
         <div className="flex items-center px-5 py-10 sm:px-6 md:px-14 lg:py-16">
           <div className="max-w-[620px]">
@@ -889,7 +889,7 @@ function ProductPage({ product }) {
             {relatedProducts.map((item) => (
               <article key={item.slug} className="group">
                 <a href={`/shop/${item.slug}`} className="block aspect-[4/5] overflow-hidden border border-ink/15 bg-porcelain">
-                  <img src={item.image} alt={item.name} className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+                  <img src={item.image} alt={item.name} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
                 </a>
                 <div className="pt-5">
                   <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{item.category}</p>
@@ -932,7 +932,7 @@ function InstagramSection() {
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
           {instagramPosts.map((post, index) => (
             <a key={post} href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="group aspect-square overflow-hidden border border-ink/10 bg-bone">
-              <img src={post} alt={`Iconica Design Studio Instagram post ${index + 1}`} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
+              <img src={post} alt={`Iconica Design Studio Instagram post ${index + 1}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
             </a>
           ))}
         </div>
@@ -972,7 +972,7 @@ function PortfolioPage() {
             {portfolioProjects.map((project) => (
               <article key={project.title} className="group">
                 <a href={`/portfolio/${project.slug}`} className="block overflow-hidden border border-ink/20 bg-bone">
-                  <img src={project.images[0]} alt={project.title} className="aspect-[4/5] h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+                  <img src={project.images[0]} alt={project.title} loading="lazy" decoding="async" className="aspect-[4/5] h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
                 </a>
                 <div className="pt-5">
                   <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-olive">{project.category}</p>
@@ -984,7 +984,7 @@ function PortfolioPage() {
                   <div className="mt-6 grid grid-cols-3 gap-2">
                     {project.images.slice(1, 4).map((image) => (
                       <div key={image} className="aspect-square overflow-hidden border border-ink/10 bg-bone">
-                        <img src={image} alt={`${project.title} detail`} className="h-full w-full object-cover" />
+                        <img src={image} alt={`${project.title} detail`} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                       </div>
                     ))}
                   </div>
@@ -996,7 +996,7 @@ function PortfolioPage() {
       </section>
 
       <section className="relative min-h-[340px] border-b border-ink md:min-h-[520px]">
-        <img src={portfolioProjects[2].images[0]} alt="Portfolio closing project" className="absolute inset-0 h-full w-full object-cover" />
+        <img src={portfolioProjects[2].images[0]} alt="Portfolio closing project" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/25" />
         <div className="relative mx-auto flex min-h-[340px] max-w-[1480px] items-end justify-end px-5 py-10 pl-7 text-white sm:px-6 sm:pl-9 md:min-h-[520px] md:px-7 md:py-12">
           <div className="image-copy max-w-[520px]">
@@ -1028,7 +1028,7 @@ function ProjectPage({ project }) {
   return (
     <>
       <section className="relative min-h-[420px] border-b border-ink md:min-h-[720px]">
-        <img src={project.images[0]} alt={project.title} className="absolute inset-0 h-full w-full object-cover" />
+        <img src={project.images[0]} alt={project.title} decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/25" />
         <div className="relative mx-auto flex min-h-[420px] max-w-[1480px] items-end px-5 py-10 pl-7 text-white sm:px-6 sm:pl-9 md:min-h-[720px] md:px-7 md:py-12">
           <div className="image-copy max-w-[620px]">
@@ -1065,7 +1065,7 @@ function ProjectPage({ project }) {
           <div className="grid gap-4 md:grid-cols-2">
             {project.images.map((image, index) => (
               <a key={image} href={image} target="_blank" rel="noreferrer" className={`group block overflow-hidden border border-ink/20 bg-bone ${index === 0 ? 'md:col-span-2' : ''}`}>
-                <img src={image} alt={`${project.title} gallery ${index + 1}`} className={`${index === 0 ? 'aspect-[16/9]' : 'aspect-[4/3]'} h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]`} />
+                <img src={image} alt={`${project.title} gallery ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" className={`${index === 0 ? 'aspect-[16/9]' : 'aspect-[4/3]'} h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]`} />
               </a>
             ))}
           </div>
@@ -1141,7 +1141,7 @@ function StudioPage() {
       <section className="grid border-b border-ink bg-porcelain md:grid-cols-[0.9fr_1.1fr]">
         <div className="flex items-center justify-center border-b border-ink px-6 py-14 md:min-h-[560px] md:border-b-0 md:border-r md:px-14">
           <div className="aspect-square w-[min(360px,72vw)] overflow-hidden rounded-full border border-ink/20 bg-bone shadow-sm md:w-[420px]">
-            <img src={img.studioPortrait} alt="Judi Teran portrait" className="h-full w-full object-cover object-top" />
+            <img src={img.studioPortrait} alt="Judi Teran portrait" loading="lazy" decoding="async" className="h-full w-full object-cover object-top" />
           </div>
         </div>
         <div className="flex items-center px-6 py-14 md:px-14">
@@ -1171,7 +1171,7 @@ function StudioPage() {
             {studioTeam.map((member) => (
               <article key={member.name} className="group text-center transition duration-300">
                 <div className="mx-auto aspect-square w-[min(240px,70vw)] overflow-hidden rounded-full border border-ink/20 bg-bone shadow-sm md:w-[260px]">
-                  <img src={member.image} alt={member.name} className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.03]" />
+                  <img src={member.image} alt={member.name} loading="lazy" decoding="async" className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.03]" />
                 </div>
                 <div className="mx-auto max-w-[380px] pt-6">
                   <p className="text-[11px] uppercase leading-5 tracking-[0.2em] text-olive">{member.role}</p>
@@ -1239,7 +1239,7 @@ function ContactPage() {
 
       <section className="grid border-b border-ink bg-porcelain lg:grid-cols-[0.95fr_1.05fr]">
         <div className="relative min-h-[360px] border-b border-ink lg:min-h-[760px] lg:border-b-0 lg:border-r">
-          <img src={img.hero} alt="Iconica Design Studio contact interior" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={img.hero} alt="Iconica Design Studio contact interior" decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10" />
           <div className="image-copy relative flex min-h-[360px] items-end px-6 py-10 text-white md:px-14 lg:min-h-[760px]">
             <div className="max-w-[520px]">
