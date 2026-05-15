@@ -6,14 +6,15 @@
     "preview": "vite preview --host 127.0.0.1"
   },
   "dependencies": {
+    "@sanity/client": "^7.22.0",
+    "@sanity/image-url": "^2.1.1",
     "@vitejs/plugin-react": "latest",
-    "vite": "latest",
+    "autoprefixer": "latest",
+    "lucide-react": "latest",
+    "postcss": "latest",
     "react": "latest",
     "react-dom": "latest",
     "tailwindcss": "^3.4.17",
-    "postcss": "latest",
-    "autoprefixer": "latest",
-    "lucide-react": "latest"
-  },
-  "devDependencies": {}
+    "vite": "latest"
+  }
 }

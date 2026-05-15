@@ -11,6 +11,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
@@ -19,8 +20,18 @@ body {
   color: #171717;
   font-family: 'Segoe UI', Arial, sans-serif;
   font-weight: 400;
-  overflow-x: hidden;
+  overflow: visible;
   width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+html.scroll-locked,
+body.scroll-locked {
+  overflow: hidden;
 }
 
 a,
@@ -29,8 +40,7 @@ button {
     background-color 220ms ease,
     border-color 220ms ease,
     color 220ms ease,
-    opacity 220ms ease,
-    transform 220ms ease;
+    opacity 220ms ease;
 }
 
 button {
@@ -47,7 +57,7 @@ img {
 
 a:hover,
 button:hover {
-  transform: translateY(-1px);
+  opacity: 0.82;
 }
 
 p,
@@ -58,6 +68,19 @@ textarea,
 button {
   font-family: 'Segoe UI', Arial, sans-serif;
   font-weight: 400;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  min-width: 0;
+}
+
+button,
+a {
+  overflow-wrap: anywhere;
 }
 
 ::selection {
@@ -72,6 +95,10 @@ button {
 .loader-logo {
   text-shadow: 0 0 18px rgba(255, 255, 255, 0.18);
   animation: logo-breathe 1800ms ease-in-out infinite alternate;
+}
+
+.image-copy {
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.72);
 }
 
 .reveal-ready {
