@@ -205,10 +205,9 @@ function ScheduleButton({ className = '' }) {
     <button
       type="button"
       onClick={openConsultationForm}
-      className={`inline-flex min-h-11 items-center justify-center border border-ink bg-ink px-5 py-3 text-[10px] font-normal uppercase tracking-[0.14em] text-porcelain hover:bg-transparent hover:text-ink sm:px-8 sm:tracking-[0.24em] ${className}`}
+      className={`inline-flex border-0 bg-transparent p-0 text-[11px] font-normal uppercase tracking-[0.18em] text-ink underline underline-offset-4 hover:text-ink/65 ${className}`}
     >
       Schedule Consultation
-      <span className="ml-3">-&gt;</span>
     </button>
   )
 }
@@ -370,7 +369,7 @@ function ConsultationWidget() {
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="absolute right-3 top-3 z-10 bg-ink p-2 text-porcelain hover:bg-porcelain hover:text-ink sm:right-4 sm:top-4"
+              className="absolute right-3 top-3 z-10 border border-ink bg-porcelain p-2 text-ink hover:bg-bone sm:right-4 sm:top-4"
               aria-label="Close consultation form"
             >
               <X size={18} strokeWidth={1.5} />
@@ -408,7 +407,7 @@ function ConsultationWidget() {
                     <p className="mt-4 text-[14px] font-normal leading-6 text-ink/70">
                       Thank you. We will review your consultation request and contact you with scheduling options.
                     </p>
-                    <button type="button" onClick={() => setIsOpen(false)} className="mt-6 bg-ink px-6 py-3 text-[11px] uppercase tracking-[0.2em] text-porcelain hover:bg-transparent hover:text-ink">
+                    <button type="button" onClick={() => setIsOpen(false)} className="mt-6 border border-ink px-6 py-3 text-[11px] uppercase tracking-[0.2em] text-ink hover:bg-bone">
                       Close
                     </button>
                   </div>
@@ -436,7 +435,7 @@ function ConsultationWidget() {
                         <option>Renovation planning</option>
                       </select>
                     </label>
-                    <button type="submit" className="mt-2 bg-ink px-7 py-5 text-[11px] uppercase tracking-[0.32em] text-porcelain hover:bg-olive">
+                    <button type="submit" className="mt-2 border border-ink px-7 py-5 text-[11px] uppercase tracking-[0.32em] text-ink hover:bg-bone">
                       Send Request <span className="ml-4 text-[16px] leading-none">-&gt;</span>
                     </button>
                   </form>
@@ -509,24 +508,9 @@ function Hero() {
       <div className="absolute inset-0 bg-black/50" />
       <div className="relative mx-auto flex min-h-[610px] max-w-[1480px] items-end justify-center px-6 pb-16 text-center text-white md:min-h-[760px] md:px-10 md:pb-24">
         <div className="image-copy max-w-[760px] -translate-y-8">
-          <h1 className="font-serif text-[17px] font-normal leading-[1.45] tracking-[0.04em]">
+          <h1 className="font-['Inter'] text-[17px] font-normal leading-[1.45] tracking-[0.04em]">
             We create environments that tell a story crafted with purpose, artistry, and soul. Each space is designed to evoke feeling and endure, balancing architecture, material, and light to shape how people live, work, and connect.
           </h1>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-            <a
-              href="/shop"
-              className="inline-flex text-[11px] font-normal uppercase tracking-[0.18em] text-white underline underline-offset-4 hover:text-white/75"
-            >
-              Shop Our Collection
-            </a>
-            <button
-              type="button"
-              onClick={openConsultationForm}
-              className="inline-flex border-0 bg-transparent p-0 text-[11px] font-normal uppercase tracking-[0.18em] text-white underline underline-offset-4 hover:text-white/75"
-            >
-              Schedule Consultation
-            </button>
-          </div>
         </div>
       </div>
     </section>
@@ -663,20 +647,74 @@ function HomeEditSection() {
 
 function InstagramSection() {
   return (
-    <section className="bg-[#fbfaf7] px-6 py-20 text-center md:py-28">
-      <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="text-[13px] font-semibold uppercase tracking-[0.16em] text-ink/55">
-        @iconicadesignstudio
-      </a>
+    <section className="border-b border-ink bg-porcelain px-4 py-12 md:px-7 md:py-16">
+      <div className="mx-auto max-w-[1480px]">
+        <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-olive">INSTAGRAM</p>
+            <h2 className="font-serif text-[17px] font-normal leading-[1.35]">@iconicadesignstudio</h2>
+          </div>
+          <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
+            Follow on Instagram
+          </a>
+        </div>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
+          {instagramPosts.map((post, index) => (
+            <a key={post} href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="group aspect-square overflow-hidden border border-ink/10 bg-bone">
+              <img src={post} alt={`Iconica Design Studio Instagram post ${index + 1}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
+            </a>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }
 
 function PressPage() {
   const leadFeature = pressFeatures[0]
+  const pressCards = [pressFeatures[0], pressFeatures[1], pressFeatures[0]]
 
   return (
     <>
-      <section className="grid border-b border-ink bg-porcelain md:grid-cols-[0.9fr_1.1fr]">
+      <section className="bg-[#fbfaf7] px-6 py-14 text-center sm:px-10 md:px-14 md:py-20">
+        <div className="mx-auto max-w-[720px]">
+          <p className="mb-5 font-serif text-[20px] font-normal uppercase leading-[1.35] tracking-[0.18em] text-ink">AS SEEN IN</p>
+          <p className="text-[14px] font-normal leading-6 text-ink/75">
+            Recognition, interviews, and community features from publications and professional networks.
+          </p>
+          <p className="mt-4 text-[14px] font-normal leading-6 text-ink/75">
+            Iconica Design Studio's press presence reflects Judi Teran's perspective on timeless interiors, thoughtful execution, and residential spaces designed with clarity, beauty, and purpose.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-[#fbfaf7] px-6 pb-16 sm:px-10 md:px-14 md:pb-24">
+        <div className="mx-auto grid max-w-[1480px] gap-14 md:grid-cols-3 md:items-start xl:gap-24">
+          {pressCards.map((feature, index) => (
+            <article key={`${feature.url}-${index}`} className={`group mx-auto flex h-[760px] w-full max-w-[410px] flex-col border border-transparent bg-[#fbfaf7] px-8 py-9 text-center transition duration-300 hover:border-ink/60 ${index === 1 ? 'md:mt-10' : ''}`}>
+              <div className="min-h-[126px]">
+                <h3 className="font-serif text-[20px] font-normal uppercase leading-[1.35] tracking-[0.04em] text-ink">{feature.title}</h3>
+                <p className="mt-3 text-[11px] font-normal uppercase tracking-[0.12em] text-ink/60">
+                  {feature.type} / {feature.publication}
+                </p>
+              </div>
+              <a href={feature.url} target="_blank" rel="noreferrer" className="mx-auto flex h-[300px] w-full items-center justify-center overflow-hidden bg-white">
+                <img src={feature.image} alt={feature.title} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+              </a>
+              <p className="mx-auto mt-8 max-w-[310px] text-[14px] font-normal leading-6 text-ink/70">{feature.excerpt}</p>
+              <a href={feature.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex justify-center text-[10px] uppercase tracking-[0.18em] underline underline-offset-4">
+                Open Press Link
+              </a>
+              <div className="mt-auto pt-8">
+                <h2 className="font-serif text-[20px] font-normal uppercase leading-[1.35] tracking-[0.04em] text-ink/75">{feature.publication}</h2>
+                <p className="mt-2 text-[11px] font-normal uppercase tracking-[0.14em] text-ink/55">{feature.date}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="hidden border-b border-ink bg-porcelain md:grid-cols-[0.9fr_1.1fr]">
         <div className="flex items-start px-6 py-8 md:border-r md:px-14 md:py-9">
           <div className="max-w-[560px]">
             <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">PRESS</p>
@@ -694,7 +732,7 @@ function PressPage() {
         </div>
       </section>
 
-      <section className="grid border-b border-ink bg-porcelain md:grid-cols-2">
+      <section className="hidden border-b border-ink bg-porcelain md:grid-cols-2">
         <a href={leadFeature.url} target="_blank" rel="noreferrer" className="group min-h-[320px] overflow-hidden border-b border-ink sm:min-h-[420px] md:min-h-[620px] md:border-b-0 md:border-r">
           <img src={leadFeature.image} alt={leadFeature.title} decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
         </a>
@@ -713,7 +751,7 @@ function PressPage() {
         </div>
       </section>
 
-      <section className="border-b border-ink bg-bone px-4 py-12 md:px-7 md:py-20">
+      <section className="hidden border-b border-ink bg-bone px-4 py-12 md:px-7 md:py-20">
         <div className="mx-auto max-w-[1480px]">
           <div className="mb-10 flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
             <h2 className="font-serif text-[17px] font-normal leading-[1.35]">AS SEEN IN</h2>
@@ -824,7 +862,7 @@ function ShopPage() {
                   key={category}
                   type="button"
                   onClick={() => setActiveCategory(category)}
-                  className={`border-r border-t border-ink/20 px-3 py-3 text-[10px] uppercase tracking-[0.12em] first:border-t-0 sm:border-t-0 sm:px-4 sm:tracking-[0.18em] sm:last:border-r-0 ${activeCategory === category ? 'bg-ink text-porcelain' : 'bg-porcelain text-ink hover:bg-bone'}`}
+                  className={`border-r border-t border-ink/20 px-3 py-3 text-[10px] uppercase tracking-[0.12em] first:border-t-0 sm:border-t-0 sm:px-4 sm:tracking-[0.18em] sm:last:border-r-0 ${activeCategory === category ? 'bg-bone text-ink' : 'bg-porcelain text-ink hover:bg-bone'}`}
                 >
                   {category}
                 </button>
@@ -846,7 +884,7 @@ function ShopPage() {
                   </div>
                   <div className="mt-6 flex items-center justify-between gap-4 border-t border-ink/15 pt-4">
                     <span className="text-[12px] tracking-[0.16em]">{product.price}</span>
-                    <a href={`/shop/${product.slug}`} className="border border-ink px-4 py-2 text-[10px] uppercase tracking-[0.16em] hover:bg-ink hover:text-porcelain">
+                    <a href={`/shop/${product.slug}`} className="border border-ink px-4 py-2 text-[10px] uppercase tracking-[0.16em] hover:bg-bone">
                       View
                     </a>
                   </div>
@@ -912,10 +950,10 @@ function ProductPage({ product }) {
               </div>
             </div>
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-              <button type="button" onClick={openConsultationForm} className="border border-ink bg-ink px-5 py-3 text-[10px] uppercase tracking-[0.14em] text-porcelain hover:bg-transparent hover:text-ink sm:px-7 sm:tracking-[0.2em]">
+              <button type="button" onClick={openConsultationForm} className="border border-ink px-5 py-3 text-[10px] uppercase tracking-[0.14em] text-ink hover:bg-bone sm:px-7 sm:tracking-[0.2em]">
                 Request This Piece
               </button>
-              <a href="/shop" className="border border-ink px-5 py-3 text-center text-[10px] uppercase tracking-[0.14em] hover:bg-ink hover:text-porcelain sm:px-7 sm:tracking-[0.2em]">
+              <a href="/shop" className="border border-ink px-5 py-3 text-center text-[10px] uppercase tracking-[0.14em] hover:bg-bone sm:px-7 sm:tracking-[0.2em]">
                 Browse More
               </a>
             </div>
@@ -1051,7 +1089,7 @@ function PortfolioPage() {
           <div className="image-copy max-w-[520px]">
             <p className="mb-3 text-[11px] uppercase tracking-[0.24em]">START A PROJECT</p>
             <h2 className="font-serif text-[17px] font-normal leading-[1.45]">Tell us about your project and we'll be in touch within 24 hours to arrange a call.</h2>
-            <ScheduleButton className="mt-8 border-white bg-ink/90 text-white hover:bg-white hover:text-ink" />
+            <ScheduleButton className="mt-8 text-white hover:text-white/75" />
           </div>
         </div>
       </section>
@@ -1313,7 +1351,7 @@ function ContactPage() {
                 <p className="mt-4 text-[14px] font-normal leading-6 text-ink/75">
                   Thank you. We will review your message and contact you with next steps.
                 </p>
-                <button type="button" onClick={() => setSubmitted(false)} className="mt-7 border border-ink px-6 py-3 text-[11px] uppercase tracking-[0.2em] hover:bg-ink hover:text-porcelain">
+                <button type="button" onClick={() => setSubmitted(false)} className="mt-7 border border-ink px-6 py-3 text-[11px] uppercase tracking-[0.2em] hover:bg-bone">
                   Send Another
                 </button>
               </div>
@@ -1366,7 +1404,7 @@ function ContactPage() {
                   Message
                   <textarea required rows="6" className="mt-2 w-full resize-none border border-ink bg-transparent px-3 py-3 text-[14px] font-normal normal-case tracking-normal outline-none focus:bg-white" placeholder="Scope, goals, budget range, and anything useful to know..." />
                 </label>
-                <button type="submit" className="mt-2 border border-ink bg-ink px-7 py-3 text-[11px] uppercase tracking-[0.2em] text-porcelain hover:bg-transparent hover:text-ink">
+                <button type="submit" className="mt-2 border border-ink px-7 py-3 text-[11px] uppercase tracking-[0.2em] text-ink hover:bg-bone">
                   Send Inquiry
                 </button>
               </form>
