@@ -25,7 +25,7 @@ const nav = [
   { label: 'PORTFOLIO', href: '/portfolio' },
   { label: 'SHOP', href: '/shop' },
   { label: 'PRESS', href: '/press' },
-  { label: 'SERVICES', href: '#' },
+  { label: 'SERVICES', href: '/contact' },
   { label: 'STUDIO', href: '/studio' },
   { label: 'CONTACT', href: '/contact' },
 ]
@@ -350,91 +350,94 @@ function ConsultationWidget() {
       <button
         type="button"
         onClick={openConsultationForm}
-        className="fixed left-0 top-1/2 z-40 hidden origin-left -translate-y-1/2 border border-l-0 border-ink bg-porcelain px-2 py-4 text-[10px] font-medium tracking-[0.2em] text-ink shadow-md hover:bg-ink hover:text-porcelain sm:block sm:px-3 sm:py-5 sm:text-[11px]"
+        className="fixed left-0 top-1/2 z-40 hidden origin-left -translate-y-1/2 border border-l-0 border-white/70 bg-white/90 px-2 py-4 text-[10px] font-medium tracking-[0.2em] text-ink shadow-[0_8px_30px_rgba(0,0,0,0.2)] backdrop-blur hover:border-ink hover:bg-porcelain hover:text-ink sm:block sm:px-3 sm:py-5 sm:text-[11px]"
         aria-label="Schedule a consultation"
       >
         <span className="[writing-mode:vertical-rl] rotate-180">SCHEDULE CONSULTATION</span>
       </button>
+      <button
+        type="button"
+        onClick={openConsultationForm}
+        className="fixed bottom-4 left-4 right-4 z-40 border border-white/70 bg-white/90 px-4 py-3 text-[10px] font-medium uppercase tracking-[0.18em] text-ink shadow-[0_8px_30px_rgba(0,0,0,0.18)] backdrop-blur hover:border-ink hover:bg-porcelain sm:hidden"
+        aria-label="Schedule a consultation"
+      >
+        Schedule Consultation
+      </button>
 
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/55 px-4 py-6 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="consultation-title">
-          <div className="relative max-h-[92vh] w-full max-w-[760px] overflow-y-auto border border-ink bg-porcelain shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/60 px-4 py-6 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="consultation-title">
+          <div className="relative max-h-[92vh] w-full max-w-[780px] overflow-y-auto bg-porcelain shadow-2xl">
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="absolute right-3 top-3 z-10 border border-ink bg-porcelain p-2 hover:bg-ink hover:text-porcelain sm:right-4 sm:top-4"
+              className="absolute right-3 top-3 z-10 bg-ink p-2 text-porcelain hover:bg-porcelain hover:text-ink sm:right-4 sm:top-4"
               aria-label="Close consultation form"
             >
               <X size={18} strokeWidth={1.5} />
             </button>
+            <h2 id="consultation-title" className="sr-only">Consultation Request</h2>
 
-            <div className="grid md:grid-cols-[0.8fr_1.2fr]">
-              <div className="hidden border-r border-ink md:block">
-                <img src={img.intro} alt="Interior styling with ceramic objects" loading="lazy" decoding="async" className="h-full min-h-[640px] w-full object-cover" />
+            <div className="grid md:grid-cols-[0.74fr_1fr]">
+              <div className="hidden min-h-[520px] bg-ink px-10 py-12 text-porcelain md:flex md:flex-col md:justify-between">
+                <div>
+                  <p className="text-[11px] uppercase leading-5 tracking-[0.42em] text-porcelain/45">ICONICA DESIGN STUDIO</p>
+                  <h2 className="mt-10 font-serif text-[34px] font-normal leading-[1.2] tracking-normal">
+                    Let's shape <span className="italic text-porcelain/55">your vision</span>
+                  </h2>
+                  <p className="mt-8 max-w-[230px] text-[14px] font-normal leading-7 text-porcelain/55">
+                    Tell us about your project and we'll be in touch within 24 hours to arrange a call.
+                  </p>
+                </div>
+                <p className="text-[11px] uppercase leading-5 tracking-[0.24em] text-porcelain/35">Complimentary. No obligation.</p>
               </div>
-              <div className="px-5 py-8 pt-14 sm:px-8 sm:pt-8">
-                <p className="mb-4 text-[11px] tracking-[0.24em] text-olive">DESIGN CONCIERGE</p>
-                <h2 id="consultation-title" className="font-serif text-[17px] font-normal leading-[1.35]">
-                  SCHEDULE A CONSULTATION
-                </h2>
-                <p className="mt-4 text-[14px] leading-6 text-ink/75">
-                  Tell us about your space, timeline, and project goals. Our studio will follow up with availability and next steps.
-                </p>
+              <div className="px-6 py-8 pt-14 sm:px-10 sm:py-12">
+                <div className="md:hidden">
+                  <p className="mb-4 text-[11px] uppercase tracking-[0.24em] text-olive">Consultation Request</p>
+                  <h2 className="font-serif text-[24px] font-normal leading-[1.25]">
+                    Let's shape your vision
+                  </h2>
+                  <p className="mt-4 text-[14px] leading-6 text-ink/65">
+                    Tell us about your project and we'll be in touch within 24 hours.
+                  </p>
+                </div>
+                <p className="mb-7 hidden text-[11px] uppercase tracking-[0.32em] text-ink/55 md:block">Consultation Request</p>
 
                 {submitted ? (
-                  <div className="mt-8 border border-ink bg-bone p-6">
-                    <p className="text-[11px] tracking-[0.22em]">REQUEST RECEIVED</p>
-                    <p className="mt-4 text-[14px] font-normal leading-6">
+                  <div className="mt-8 border border-ink/15 bg-bone p-6 md:mt-0">
+                    <p className="text-[11px] uppercase tracking-[0.22em]">Request Received</p>
+                    <p className="mt-4 text-[14px] font-normal leading-6 text-ink/70">
                       Thank you. We will review your consultation request and contact you with scheduling options.
                     </p>
-                    <button type="button" onClick={() => setIsOpen(false)} className="mt-6 border border-ink px-6 py-3 text-[11px] tracking-[0.2em] hover:bg-ink hover:text-porcelain">
-                      CLOSE
+                    <button type="button" onClick={() => setIsOpen(false)} className="mt-6 bg-ink px-6 py-3 text-[11px] uppercase tracking-[0.2em] text-porcelain hover:bg-transparent hover:text-ink">
+                      Close
                     </button>
                   </div>
                 ) : (
-                  <form className="mt-7 grid gap-4" onSubmit={handleSubmit}>
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <label className="text-[11px] tracking-[0.18em]">
-                        NAME
-                        <input required type="text" className="mt-2 w-full border border-ink bg-transparent px-3 py-3 text-[14px] font-normal tracking-normal outline-none focus:bg-white" />
-                      </label>
-                      <label className="text-[11px] tracking-[0.18em]">
-                        EMAIL
-                        <input required type="email" className="mt-2 w-full border border-ink bg-transparent px-3 py-3 text-[14px] font-normal tracking-normal outline-none focus:bg-white" />
-                      </label>
-                    </div>
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <label className="text-[11px] tracking-[0.18em]">
-                        PHONE
-                        <input type="tel" className="mt-2 w-full border border-ink bg-transparent px-3 py-3 text-[14px] font-normal tracking-normal outline-none focus:bg-white" />
-                      </label>
-                      <label className="text-[11px] tracking-[0.18em]">
-                        CONSULTATION TYPE
-                        <select required className="mt-2 w-full border border-ink bg-porcelain px-3 py-3 text-[14px] font-normal tracking-normal outline-none focus:bg-white">
-                          <option value="">Select one</option>
-                          <option>Residential design</option>
-                          <option>Commercial design</option>
-                          <option>Design-build consultation</option>
-                          <option>Renovation planning</option>
-                        </select>
-                      </label>
-                    </div>
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <label className="text-[11px] tracking-[0.18em]">
-                        PREFERRED DATE
-                        <input type="date" className="mt-2 w-full border border-ink bg-transparent px-3 py-3 text-[14px] font-normal tracking-normal outline-none focus:bg-white" />
-                      </label>
-                      <label className="text-[11px] tracking-[0.18em]">
-                        PREFERRED TIME
-                        <input type="time" className="mt-2 w-full border border-ink bg-transparent px-3 py-3 text-[14px] font-normal tracking-normal outline-none focus:bg-white" />
-                      </label>
-                    </div>
-                    <label className="text-[11px] tracking-[0.18em]">
-                      PROJECT NOTES
-                      <textarea rows="4" className="mt-2 w-full resize-none border border-ink bg-transparent px-3 py-3 text-[14px] font-normal tracking-normal outline-none focus:bg-white" placeholder="Project type, location, timeline, scope, budget range..." />
+                  <form className="mt-8 grid gap-6 md:mt-0" onSubmit={handleSubmit}>
+                    <label className="text-[11px] uppercase tracking-[0.24em] text-ink/55">
+                      Your Name
+                      <input required type="text" placeholder="Full name" className="mt-3 w-full border-0 border-b border-ink/20 bg-transparent px-0 py-2 text-[15px] font-normal normal-case tracking-normal text-ink outline-none placeholder:text-ink/30 focus:border-ink" />
                     </label>
-                    <button type="submit" className="mt-2 border border-ink bg-ink px-7 py-3 text-[11px] tracking-[0.2em] text-porcelain hover:bg-transparent hover:text-ink">
-                      REQUEST CONSULTATION
+                    <label className="text-[11px] uppercase tracking-[0.24em] text-ink/55">
+                      Email Address
+                      <input required type="email" placeholder="you@email.com" className="mt-3 w-full border-0 border-b border-ink/20 bg-transparent px-0 py-2 text-[15px] font-normal normal-case tracking-normal text-ink outline-none placeholder:text-ink/30 focus:border-ink" />
+                    </label>
+                    <label className="text-[11px] uppercase tracking-[0.24em] text-ink/55">
+                      Phone <span className="tracking-[0.18em]">(Optional)</span>
+                      <input type="tel" placeholder="+1 000 000 0000" className="mt-3 w-full border-0 border-b border-ink/20 bg-transparent px-0 py-2 text-[15px] font-normal normal-case tracking-normal text-ink outline-none placeholder:text-ink/30 focus:border-ink" />
+                    </label>
+                    <label className="text-[11px] uppercase tracking-[0.24em] text-ink/55">
+                      Project Type
+                      <select required className="mt-3 w-full border-0 border-b border-ink/20 bg-transparent px-0 py-2 text-[15px] font-normal normal-case tracking-normal text-ink outline-none focus:border-ink">
+                        <option value="">Select a service</option>
+                        <option>Residential design</option>
+                        <option>Commercial design</option>
+                        <option>Design-build consultation</option>
+                        <option>Renovation planning</option>
+                      </select>
+                    </label>
+                    <button type="submit" className="mt-2 bg-ink px-7 py-5 text-[11px] uppercase tracking-[0.32em] text-porcelain hover:bg-olive">
+                      Send Request <span className="ml-4 text-[16px] leading-none">-&gt;</span>
                     </button>
                   </form>
                 )}
@@ -451,14 +454,17 @@ function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-30 border-b border-ink bg-porcelain/95 backdrop-blur">
-      <div className="mx-auto flex max-w-[1480px] items-center gap-2 px-3 py-3 sm:gap-3 sm:px-4 sm:py-4 md:px-7 xl:gap-5">
-        <a href="/" className="min-w-0 flex-1 truncate font-serif text-[12px] tracking-[0.06em] sm:shrink-0 sm:text-[18px] sm:tracking-[0.12em] md:text-[24px] xl:flex-none xl:text-[26px]">
+    <header className="sticky top-0 z-30 bg-[#fbfaf7]/95 text-[#2b2a26] backdrop-blur">
+      <div className="hidden h-[18px] items-center justify-center bg-[#eee9df] text-[8px] font-normal uppercase tracking-[0.18em] text-ink/55 sm:flex">
+        Iconica Design Studio
+      </div>
+      <div className="mx-auto flex h-[62px] max-w-[1480px] items-center gap-4 px-5 sm:px-7 lg:px-10">
+        <a href="/" className="min-w-0 flex-1 truncate font-serif text-[17px] font-normal uppercase tracking-[0.1em] text-ink lg:flex-none">
           ICONICA DESIGN STUDIO
         </a>
-        <nav className="hidden flex-1 flex-wrap gap-x-5 gap-y-2 text-[11px] tracking-[0.18em] xl:flex">
+        <nav className="hidden flex-1 flex-wrap justify-center gap-x-6 gap-y-2 text-[12px] font-normal uppercase tracking-[0.14em] text-ink/65 xl:flex">
           {nav.map((item) => (
-            <a key={item.label} href={item.href} className="hover:underline">
+            <a key={item.label} href={item.href} className="hover:text-ink hover:underline hover:underline-offset-4">
               {item.label}
             </a>
           ))}
@@ -471,22 +477,22 @@ function Header() {
         >
           {mobileMenuOpen ? <X size={21} strokeWidth={1.5} /> : <Menu size={21} strokeWidth={1.5} />}
         </button>
-        <div className="flex shrink-0 items-center justify-end gap-2 sm:gap-4">
-          <button className="hidden sm:block" aria-label="Search">
-            <Search size={18} strokeWidth={1.5} />
-          </button>
-          <button className="hidden md:block" aria-label="Account">
-            <UserRound size={18} strokeWidth={1.5} />
-          </button>
+        <div className="flex shrink-0 items-center justify-end gap-4 text-ink/75">
+          <a href="/shop" className="hidden sm:block" aria-label="Search">
+            <Search size={19} strokeWidth={1.6} />
+          </a>
+          <a href="/contact" className="hidden md:block" aria-label="Account">
+            <UserRound size={19} strokeWidth={1.6} />
+          </a>
           <a href="/shop" aria-label="Shop">
-            <ShoppingBag size={18} strokeWidth={1.5} />
+            <ShoppingBag size={19} strokeWidth={1.6} />
           </a>
         </div>
       </div>
       {mobileMenuOpen && (
-        <nav className="grid border-t border-ink px-4 py-4 text-[11px] tracking-[0.18em] xl:hidden">
+        <nav className="grid border-t border-ink/10 px-5 py-4 text-[11px] uppercase tracking-[0.16em] xl:hidden">
           {nav.map((item) => (
-            <a key={item.label} href={item.href} className="border-b border-ink/15 py-3 last:border-b-0" onClick={() => setMobileMenuOpen(false)}>
+            <a key={item.label} href={item.href} className="border-b border-ink/10 py-3 last:border-b-0" onClick={() => setMobileMenuOpen(false)}>
               {item.label}
             </a>
           ))}
@@ -498,16 +504,29 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="relative min-h-[calc(100svh-57px)] overflow-hidden border-b border-ink sm:min-h-[calc(100svh-66px)]">
+    <section className="relative min-h-[610px] overflow-hidden bg-bone md:min-h-[760px]">
       <img src={img.hero} alt="Iconica Design Studio interior project" decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-black/20" />
-      <div className="relative mx-auto flex min-h-[calc(100svh-57px)] max-w-[1480px] items-end px-5 pb-9 pl-7 sm:min-h-[calc(100svh-66px)] sm:px-6 sm:pl-9 md:px-7 md:pb-16">
-        <div className="image-copy max-w-[680px] text-white">
-          <p className="mb-5 text-[11px] tracking-[0.24em]">WELCOME</p>
-          <h1 className="font-serif text-[17px] font-normal leading-[1.45] tracking-normal">
+      <div className="absolute inset-0 bg-black/50" />
+      <div className="relative mx-auto flex min-h-[610px] max-w-[1480px] items-end justify-center px-6 pb-16 text-center text-white md:min-h-[760px] md:px-10 md:pb-24">
+        <div className="image-copy max-w-[760px] -translate-y-8">
+          <h1 className="font-serif text-[17px] font-normal leading-[1.45] tracking-[0.04em]">
             We create environments that tell a story crafted with purpose, artistry, and soul. Each space is designed to evoke feeling and endure, balancing architecture, material, and light to shape how people live, work, and connect.
           </h1>
-          <ScheduleButton className="mt-8 border-white bg-ink/90 text-white hover:bg-white hover:text-ink" />
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+            <a
+              href="/shop"
+              className="inline-flex text-[11px] font-normal uppercase tracking-[0.18em] text-white underline underline-offset-4 hover:text-white/75"
+            >
+              Shop Our Collection
+            </a>
+            <button
+              type="button"
+              onClick={openConsultationForm}
+              className="inline-flex border-0 bg-transparent p-0 text-[11px] font-normal uppercase tracking-[0.18em] text-white underline underline-offset-4 hover:text-white/75"
+            >
+              Schedule Consultation
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -516,37 +535,48 @@ function Hero() {
 
 function FeatureRow() {
   return (
-    <section className="grid border-b border-ink md:grid-cols-2">
-      <div className="min-h-[320px] border-b border-ink md:min-h-[420px] md:border-b-0 md:border-r">
-        <img src={img.bowl} alt="Iconica Design Studio project detail" loading="lazy" decoding="async" className="h-full w-full object-cover" />
-      </div>
-      <div className="flex items-center bg-porcelain px-5 py-12 sm:px-6 md:px-14 md:py-16">
-        <div className="max-w-[540px]">
-          <p className="mb-5 text-[11px] tracking-[0.22em] text-olive">DESIGN + BUILD</p>
-          <h2 className="font-serif text-[17px] font-normal leading-[1.45]">
-            A full-service design-build studio crafting timeless spaces with architectural depth and refined detail.
-          </h2>
-          <p className="mt-7 max-w-[460px] text-[14px] font-normal leading-6">
-            We bring vision to life from the earliest concept to the final layer of finish.
+    <section className="bg-[#fbfaf7] px-6 py-10 sm:px-10 md:py-12 lg:px-7">
+      <div className="mx-auto grid max-w-[1260px] gap-8 lg:grid-cols-[34px_minmax(0,0.98fr)_minmax(360px,0.82fr)] lg:items-center lg:gap-9">
+        <div className="hidden h-full items-center justify-center lg:flex">
+          <p className="[writing-mode:vertical-rl] rotate-180 text-[10px] uppercase tracking-[0.28em] text-ink/55">
+            ICONICA DESIGN STUDIO
           </p>
-          <a href="/portfolio" className="mt-8 inline-flex text-[10px] uppercase tracking-[0.24em] underline underline-offset-4">
-            View Our Work
-          </a>
+        </div>
+        <div className="overflow-hidden bg-bone">
+          <img src={img.bowl} alt="Iconica Design Studio project detail" loading="lazy" decoding="async" className="aspect-square h-full w-full object-cover" />
+        </div>
+        <div className="flex items-center bg-[#fbfaf7] lg:min-h-[510px]">
+          <div className="max-w-[560px]">
+            <p className="mb-4 font-serif text-[20px] font-normal uppercase leading-[1.35] tracking-[0.12em] text-ink/75">DESIGN + BUILD</p>
+            <h2 className="font-serif text-[20px] font-normal leading-[1.35] text-ink">
+              Residential and boutique commercial interiors rooted in atmosphere, materiality, and experience.
+            </h2>
+            <p className="mt-5 max-w-[500px] text-[14px] font-normal leading-6 text-ink/70">
+              We bring vision to life from the earliest concept to the final layer of finish.
+            </p>
+            <a href="/portfolio" className="mt-6 inline-flex text-[11px] uppercase tracking-[0.16em] text-ink underline underline-offset-4">
+              View Our Work
+            </a>
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
-function ImageCallout({ image, title, text, align = 'left', href = '#' }) {
+function ImageCallout({ image, title, text, align = 'left', href = '#', height = 'tall' }) {
+  const heightClass = height === 'short' ? 'min-h-[420px] md:min-h-[560px]' : 'min-h-[520px] md:min-h-[760px]'
+  const copyAlign = align === 'center' ? 'items-center justify-center text-center' : align === 'right' ? 'items-start justify-end text-left' : 'items-start justify-start text-left'
+  const copyPadding = align === 'center' ? 'px-6 py-10' : 'px-6 py-12 sm:px-9 md:px-14 md:py-16'
+
   return (
-    <section className="relative min-h-[340px] border-b border-ink md:min-h-[520px]">
+    <section className={`relative overflow-hidden bg-bone ${heightClass}`}>
       <img src={image} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/25" />
-      <div className={`relative mx-auto flex min-h-[340px] max-w-[1480px] items-end px-5 py-10 pl-7 sm:px-6 sm:pl-9 md:min-h-[520px] md:px-7 md:py-12 ${align === 'right' ? 'justify-end' : ''}`}>
-        <a href={href} className="image-copy max-w-[520px] text-white">
-          <p className="mb-3 text-[11px] tracking-[0.24em]">{title}</p>
-          <h3 className="font-serif text-[17px] font-normal leading-[1.45]">{text}</h3>
+      <div className="absolute inset-0 bg-black/55" />
+      <div className={`relative mx-auto flex max-w-[1440px] ${heightClass} ${copyAlign} ${copyPadding}`}>
+        <a href={href} className="image-copy max-w-[620px] text-white">
+          <p className="mb-3 font-serif text-[20px] font-normal uppercase leading-[1.35] tracking-[0.12em]">{title}</p>
+          <h3 className="text-[14px] font-normal leading-6">{text}</h3>
         </a>
       </div>
     </section>
@@ -555,37 +585,40 @@ function ImageCallout({ image, title, text, align = 'left', href = '#' }) {
 
 function FeaturedProducts() {
   const featuredProducts = shopProducts.filter((product) => product.featured).slice(0, 4)
+  const editorialItems = featuredProducts.slice(0, 3)
 
   return (
-    <section className="border-b border-ink bg-porcelain px-4 py-12 md:px-7 md:py-20">
-      <div className="mx-auto max-w-[1480px]">
-        <div className="mb-10 flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
-          <div className="max-w-[560px]">
-            <p className="mb-4 text-[11px] uppercase tracking-[0.24em] text-olive">SHOP</p>
-            <h2 className="font-serif text-[17px] font-normal leading-[1.35]">Featured Furniture + Objects</h2>
-          </div>
-          <a href="/shop" className="border border-ink px-6 py-3 text-[10px] uppercase tracking-[0.2em] hover:bg-ink hover:text-porcelain">
-            Shop Collection
-          </a>
+    <section className="bg-[#fbfaf7] px-6 py-12 sm:px-10 md:py-14 lg:px-7">
+      <div className="mx-auto grid max-w-[1260px] gap-8 lg:grid-cols-[34px_1fr]">
+        <div className="hidden items-center justify-center lg:flex">
+          <p className="[writing-mode:vertical-rl] rotate-180 text-[10px] uppercase tracking-[0.28em] text-ink/55">
+            ICONICA COLLECTION
+          </p>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredProducts.map((product) => (
-            <article key={product.name} className="group">
-              <a href={`/shop/${product.slug}`} className="block aspect-[4/5] overflow-hidden border border-ink/15 bg-bone">
-                <img src={product.image} alt={product.name} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
-              </a>
-              <div className="pt-5">
-                <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{product.category}</p>
-                <h3 className="mt-3 font-serif text-[17px] font-normal leading-[1.35]">{product.name}</h3>
-                <div className="mt-4 flex items-center justify-between gap-4">
-                  <span className="text-[12px] tracking-[0.16em]">{product.price}</span>
-                  <a href={`/shop/${product.slug}`} className="text-[10px] uppercase tracking-[0.18em] underline underline-offset-4">
+        <div>
+          <h2 className="mb-9 text-center font-serif text-[20px] font-normal uppercase leading-[1.35] tracking-[0.12em] text-ink/70">Featured Furniture + Objects</h2>
+          <div className="grid gap-8 md:grid-cols-3">
+            {editorialItems.map((product) => (
+              <article key={product.name} className="group">
+                <a href={`/shop/${product.slug}`} className="block aspect-[1.05] overflow-hidden bg-bone">
+                  <img src={product.image} alt={product.name} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+                </a>
+                <div className="pt-5">
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{product.category}</p>
+                  <h3 className="mt-3 font-serif text-[20px] font-normal leading-[1.35]">{product.name}</h3>
+                  <p className="mt-3 text-[14px] font-normal leading-6 text-ink/65">{product.detail}</p>
+                  <a href={`/shop/${product.slug}`} className="mt-4 inline-flex text-[10px] uppercase tracking-[0.16em] underline underline-offset-4">
                     View
                   </a>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <a href="/shop" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
+              Shop Collection
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -593,31 +626,47 @@ function FeaturedProducts() {
 }
 
 function Press() {
+  const logos = ['AD', 'Palo Alto Daily', 'apartment therapy', 'design milk']
+
   return (
-    <section className="border-b border-ink bg-bone px-4 py-10 md:px-7 md:py-16">
-      <div className="mx-auto max-w-[1180px] text-center">
-        <p className="mb-8 text-[11px] tracking-[0.24em]">AS SEEN IN</p>
-        <div className="grid gap-5 sm:grid-cols-2">
-          {pressFeatures.map((feature) => (
-            <a
-              key={feature.publication}
-              href={feature.url}
-              target="_blank"
-              rel="noreferrer"
-              className="group grid overflow-hidden border border-ink/15 bg-porcelain text-left transition duration-300 hover:bg-ink hover:text-porcelain sm:grid-cols-[0.48fr_0.52fr]"
-            >
-              <span className="block aspect-[4/3] overflow-hidden bg-white sm:aspect-auto">
-                <img src={feature.image} alt={feature.publication} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
-              </span>
-              <span className="flex min-h-[150px] flex-col justify-center p-5">
-                <span className="block text-[10px] uppercase tracking-[0.18em] text-olive transition duration-300 group-hover:text-porcelain/70">{feature.type}</span>
-                <span className="mt-3 block font-serif text-[17px] font-normal leading-[1.35]">{feature.publication}</span>
-                <span className="mt-4 block text-[10px] uppercase tracking-[0.18em] opacity-70">Read Feature</span>
-              </span>
+    <section className="bg-[#fbfaf7] px-6 py-14 sm:px-10 md:py-16 lg:px-7">
+      <div className="mx-auto max-w-[980px] text-center">
+        <p className="mb-10 text-[11px] font-normal uppercase tracking-[0.22em] text-ink/55">AS SEEN IN</p>
+        <div className="grid items-center gap-8 text-ink/80 sm:grid-cols-4">
+          {logos.map((logo, index) => (
+            <a key={logo} href={pressFeatures[index % pressFeatures.length].url} target="_blank" rel="noreferrer" className="font-serif text-[24px] font-normal leading-none sm:text-[30px]">
+              {logo}
             </a>
           ))}
         </div>
       </div>
+    </section>
+  )
+}
+
+function HomeEditSection() {
+  return (
+    <section className="relative min-h-[500px] overflow-hidden bg-bone md:min-h-[690px]">
+      <img src={img.edit} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/25" />
+      <div className="relative mx-auto flex min-h-[500px] max-w-[1440px] items-start px-6 py-16 text-white sm:px-9 md:min-h-[690px] md:px-14 md:py-24">
+        <a href="/portfolio" className="image-copy max-w-[640px]">
+          <p className="mb-3 font-serif text-[20px] font-normal uppercase leading-[1.35] tracking-[0.12em]">CURATED LIVING</p>
+          <h3 className="text-[14px] font-normal leading-6">
+            Every project is a reflection of lifestyle curated, elevated, and built to endure.
+          </h3>
+        </a>
+      </div>
+    </section>
+  )
+}
+
+function InstagramSection() {
+  return (
+    <section className="bg-[#fbfaf7] px-6 py-20 text-center md:py-28">
+      <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="text-[13px] font-semibold uppercase tracking-[0.16em] text-ink/55">
+        @iconicadesignstudio
+      </a>
     </section>
   )
 }
@@ -916,7 +965,7 @@ const instagramPosts = [
   img.edit,
 ]
 
-function InstagramSection() {
+function InstagramGridSection() {
   return (
     <section className="border-b border-ink bg-porcelain px-4 py-12 md:px-7 md:py-16">
       <div className="mx-auto max-w-[1480px]">
@@ -997,7 +1046,7 @@ function PortfolioPage() {
 
       <section className="relative min-h-[340px] border-b border-ink md:min-h-[520px]">
         <img src={portfolioProjects[2].images[0]} alt="Portfolio closing project" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/55 to-black/30" />
         <div className="relative mx-auto flex min-h-[340px] max-w-[1480px] items-end justify-end px-5 py-10 pl-7 text-white sm:px-6 sm:pl-9 md:min-h-[520px] md:px-7 md:py-12">
           <div className="image-copy max-w-[520px]">
             <p className="mb-3 text-[11px] uppercase tracking-[0.24em]">START A PROJECT</p>
@@ -1029,7 +1078,7 @@ function ProjectPage({ project }) {
     <>
       <section className="relative min-h-[420px] border-b border-ink md:min-h-[720px]">
         <img src={project.images[0]} alt={project.title} decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/55 to-black/30" />
         <div className="relative mx-auto flex min-h-[420px] max-w-[1480px] items-end px-5 py-10 pl-7 text-white sm:px-6 sm:pl-9 md:min-h-[720px] md:px-7 md:py-12">
           <div className="image-copy max-w-[620px]">
             <p className="mb-3 text-[11px] uppercase tracking-[0.24em]">{project.category}</p>
@@ -1240,7 +1289,7 @@ function ContactPage() {
       <section className="grid border-b border-ink bg-porcelain lg:grid-cols-[0.95fr_1.05fr]">
         <div className="relative min-h-[360px] border-b border-ink lg:min-h-[760px] lg:border-b-0 lg:border-r">
           <img src={img.hero} alt="Iconica Design Studio contact interior" decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/55 to-black/30" />
           <div className="image-copy relative flex min-h-[360px] items-end px-6 py-10 text-white md:px-14 lg:min-h-[760px]">
             <div className="max-w-[520px]">
               <p className="mb-4 text-[11px] uppercase tracking-[0.24em]">ICONICA DESIGN STUDIO</p>
@@ -1331,45 +1380,42 @@ function ContactPage() {
 
 function Footer() {
   const links = [
+    { label: 'Instagram', href: 'https://www.instagram.com/iconicadesignstudio/' },
+    { label: 'Contact', href: '/contact' },
+    { label: 'Returns', href: '/contact' },
     { label: 'Shop', href: '/shop' },
     { label: 'Portfolio', href: '/portfolio' },
     { label: 'Press', href: '/press' },
     { label: 'Studio', href: '/studio' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Services', href: '/contact' },
+    { label: 'Trade Program', href: '/contact' },
+    { label: 'Project Inquiry', href: '/contact' },
+    { label: 'Concierge', href: '/contact' },
   ]
   return (
-    <footer className="bg-ink px-4 py-12 text-porcelain md:px-7">
-      <div className="mx-auto grid max-w-[1480px] gap-10 md:grid-cols-[1fr_1.2fr]">
-        <div>
-          <h2 className="font-serif text-[18px] tracking-[0.08em] sm:text-[31px] sm:tracking-[0.14em]">ICONICA DESIGN STUDIO</h2>
-          <p className="mt-5 max-w-[420px] text-[14px] leading-6 text-porcelain/75">
-            Timeless interiors. Tailored construction. Curated living.
-          </p>
+    <footer className="bg-[#f1eee5] text-ink/75">
+      <div className="mx-auto grid max-w-[1480px] gap-12 px-6 py-16 sm:px-10 md:px-14 md:py-20 lg:grid-cols-[1fr_1.08fr]">
+        <div className="grid max-w-[720px] grid-cols-2 gap-x-12 gap-y-4 text-[14px] font-normal uppercase leading-6 tracking-[0.02em] sm:grid-cols-4">
+          {links.map((link) => (
+            <a key={link.label} href={link.href} className="hover:text-ink hover:underline hover:underline-offset-4">
+              {link.label}
+            </a>
+          ))}
         </div>
-        <div className="grid gap-8 sm:grid-cols-2">
-          <div>
-            <p className="mb-4 text-[11px] tracking-[0.22em]">INFORMATION</p>
-            <div className="grid grid-cols-2 gap-3 text-[11px] tracking-[0.14em]">
-              {links.map((link) => (
-                <a key={link.label} href={link.href} className="hover:underline">
-                  {link.label}
-                </a>
-              ))}
-            </div>
+        <form onSubmit={(event) => event.preventDefault()} className="w-full">
+          <label className="block text-[14px] font-normal uppercase leading-6 tracking-[0.02em] text-ink/80" htmlFor="footer-email">
+            Join Our Newsletter
+          </label>
+          <div className="mt-12 flex border-b border-ink/20">
+            <input id="footer-email" type="email" placeholder="Enter your email" className="min-w-0 flex-1 bg-transparent px-0 py-4 text-[14px] font-normal outline-none placeholder:text-ink/45" />
+            <button className="px-0 py-4 text-[14px] font-normal uppercase tracking-[0.16em] hover:text-ink">Subscribe</button>
           </div>
-          <form>
-            <label className="block text-[11px] tracking-[0.22em]" htmlFor="footer-email">
-              JOIN OUR NEWSLETTER
-            </label>
-            <div className="mt-5 flex flex-col border border-porcelain sm:flex-row">
-              <input id="footer-email" type="email" placeholder="Email" className="min-w-0 flex-1 bg-transparent px-4 py-3 text-[14px] font-normal outline-none placeholder:text-porcelain/60" />
-              <button className="border-t border-porcelain px-5 py-3 text-[11px] tracking-[0.16em] hover:bg-porcelain hover:text-ink sm:border-l sm:border-t-0">SUBSCRIBE</button>
-            </div>
-          </form>
-        </div>
+        </form>
       </div>
-      <div className="mx-auto mt-12 max-w-[1480px] border-t border-porcelain/30 pt-6 text-[11px] tracking-[0.14em] text-porcelain/70">
-        (C) 2026 Iconica Design Studio | Design + Build + Curate | info@iconicainteriordesign.com | Instagram @iconicadesignstudio | IDCO
+      <div className="border-t border-ink/10 px-6 py-8 sm:px-10 md:px-14">
+        <div className="mx-auto max-w-[1480px] text-[14px] font-normal uppercase tracking-[0.02em] text-ink/75">
+          (C) 2026 Iconica Design Studio - All Rights Reserved
+        </div>
       </div>
     </footer>
   )
@@ -1466,14 +1512,14 @@ function App() {
             <FeatureRow />
             <ImageCallout
               image={img.canoa}
-              title="THE STUDIO"
-              text="A multidisciplinary studio creating spaces that embody modern luxury and intentional living. Explore the residential and commercial work that reflects our integrated approach to design and build."
+              title="PORTFOLIO"
+              text="A selection of residential and commercial projects shaped through refined materials, thoughtful construction, and layered interior detail."
               href="/portfolio"
             />
             <FeaturedProducts />
-            <ImageCallout image={img.trade} title="READY TO START YOUR PROJECT?" text="Let's talk about what you have in mind." align="right" />
+            <ImageCallout image={img.trade} title="READY TO START YOUR PROJECT?" text="Let's talk about what you have in mind." align="right" height="short" />
             <Press />
-            <ImageCallout image={img.edit} title="CURATED LIVING" text="Every project is a reflection of lifestyle curated, elevated, and built to endure." />
+            <HomeEditSection />
             <InstagramSection />
           </>
         )}
