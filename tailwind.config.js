@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Segoe UI', 'Arial', 'sans-serif'],
-        serif: ['Jost', 'Segoe UI', 'sans-serif'],
+        sans: ['Inter', 'Segoe UI', 'Arial', 'sans-serif'],
+        serif: ['Jost', 'Inter', 'Segoe UI', 'sans-serif'],
       },
       colors: {
         porcelain: '#f5f2eb',

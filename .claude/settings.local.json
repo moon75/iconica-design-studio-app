@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(powershell -Command \"\\(Get-Content 'src/main.jsx' -Raw\\) -replace 'font-light', 'font-normal' | Set-Content 'src/main.jsx' -NoNewline -Encoding utf8\")"
+    ]
+  }
+}

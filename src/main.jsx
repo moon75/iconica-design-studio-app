@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+﻿import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Menu, Search, ShoppingBag, UserRound, X } from 'lucide-react'
 import './styles.css'
@@ -276,10 +276,13 @@ function usePageLoader() {
   return { isVisible, progress, startLoader }
 }
 
-function useSmoothReveals() {
+function useSmoothReveals(path) {
   useEffect(() => {
     const animatedElements = document.querySelectorAll('section, footer, article, .reveal-item')
-    animatedElements.forEach((element) => element.classList.add('reveal-ready'))
+    animatedElements.forEach((element) => {
+      element.classList.remove('reveal-visible')
+      element.classList.add('reveal-ready')
+    })
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -296,7 +299,7 @@ function useSmoothReveals() {
     animatedElements.forEach((element) => observer.observe(element))
 
     return () => observer.disconnect()
-  }, [])
+  }, [path])
 }
 
 function ConsultationWidget() {
@@ -349,7 +352,7 @@ function ConsultationWidget() {
       <button
         type="button"
         onClick={openConsultationForm}
-        className="fixed left-0 top-1/2 z-40 hidden origin-left -translate-y-1/2 border border-l-0 border-white/70 bg-white/90 px-2 py-4 text-[10px] font-medium tracking-[0.2em] text-ink shadow-[0_8px_30px_rgba(0,0,0,0.2)] backdrop-blur hover:border-ink hover:bg-porcelain hover:text-ink sm:block sm:px-3 sm:py-5 sm:text-[11px]"
+        className="schedule-consult schedule-consult--side fixed left-0 top-1/2 z-40 hidden origin-left -translate-y-1/2 border-0 bg-transparent px-2 py-4 text-[10px] font-normal tracking-[0.22em] sm:block sm:px-3 sm:py-5 sm:text-[11px]"
         aria-label="Schedule a consultation"
       >
         <span className="[writing-mode:vertical-rl] rotate-180">SCHEDULE CONSULTATION</span>
@@ -357,7 +360,7 @@ function ConsultationWidget() {
       <button
         type="button"
         onClick={openConsultationForm}
-        className="fixed bottom-4 left-4 right-4 z-40 border border-white/70 bg-white/90 px-4 py-3 text-[10px] font-medium uppercase tracking-[0.18em] text-ink shadow-[0_8px_30px_rgba(0,0,0,0.18)] backdrop-blur hover:border-ink hover:bg-porcelain sm:hidden"
+        className="schedule-consult schedule-consult--bottom fixed bottom-4 left-4 right-4 z-40 border-0 bg-transparent px-4 py-3 text-[10px] font-normal uppercase tracking-[0.18em] sm:hidden"
         aria-label="Schedule a consultation"
       >
         Schedule Consultation
@@ -454,9 +457,6 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-30 bg-[#fbfaf7]/95 text-[#2b2a26] backdrop-blur">
-      <div className="hidden h-[18px] items-center justify-center bg-[#eee9df] text-[8px] font-normal uppercase tracking-[0.18em] text-ink/55 sm:flex">
-        Iconica Design Studio
-      </div>
       <div className="mx-auto flex h-[62px] max-w-[1480px] items-center gap-4 px-5 sm:px-7 lg:px-10">
         <a href="/" className="min-w-0 flex-1 truncate font-serif text-[17px] font-normal uppercase tracking-[0.1em] text-ink lg:flex-none">
           ICONICA DESIGN STUDIO
@@ -504,13 +504,15 @@ function Header() {
 function Hero() {
   return (
     <section className="relative min-h-[610px] overflow-hidden bg-bone md:min-h-[760px]">
-      <img src={img.hero} alt="Iconica Design Studio interior project" decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
+      <img src={img.hero} alt="Iconica Design Studio interior project" decoding="async" fetchPriority="high" className="hero-image absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-black/50" />
       <div className="relative mx-auto flex min-h-[610px] max-w-[1480px] items-end justify-center px-6 pb-16 text-center text-white md:min-h-[760px] md:px-10 md:pb-24">
-        <div className="image-copy max-w-[760px] -translate-y-8">
-          <h1 className="font-['Inter'] text-[17px] font-normal leading-[1.45] tracking-[0.04em]">
-            We create environments that tell a story crafted with purpose, artistry, and soul. Each space is designed to evoke feeling and endure, balancing architecture, material, and light to shape how people live, work, and connect.
-          </h1>
+        <div className="image-copy max-w-[760px] -translate-y-[5rem]">
+          <div className="hero-rise">
+            <h1 className="font-['Inter'] text-[17px] font-normal leading-[1.45] tracking-[0.04em]">
+              We create environments that tell a story crafted with purpose, artistry, and soul. Each space is designed to evoke feeling and endure, balancing architecture, material, and light to shape how people live, work, and connect.
+            </h1>
+          </div>
         </div>
       </div>
     </section>
@@ -538,8 +540,8 @@ function FeatureRow() {
             <p className="mt-5 max-w-[500px] text-[14px] font-normal leading-6 text-ink/70">
               We bring vision to life from the earliest concept to the final layer of finish.
             </p>
-            <a href="/portfolio" className="mt-6 inline-flex text-[11px] uppercase tracking-[0.16em] text-ink underline underline-offset-4">
-              View Our Work
+            <a href="/studio" className="mt-6 inline-flex text-[11px] uppercase tracking-[0.16em] text-ink underline underline-offset-4">
+              View Studio
             </a>
           </div>
         </div>
@@ -548,10 +550,22 @@ function FeatureRow() {
   )
 }
 
-function ImageCallout({ image, title, text, align = 'left', href = '#', height = 'tall' }) {
-  const heightClass = height === 'short' ? 'min-h-[420px] md:min-h-[560px]' : 'min-h-[520px] md:min-h-[760px]'
+function ImageCallout({ image, title, text, align = 'left', href = '#', height = 'tall', cta }) {
+  const heightClass =
+    height === 'short'
+      ? 'min-h-[260px] md:min-h-[340px]'
+      : height === 'medium'
+        ? 'min-h-[360px] md:min-h-[480px]'
+        : 'min-h-[520px] md:min-h-[760px]'
   const copyAlign = align === 'center' ? 'items-center justify-center text-center' : align === 'right' ? 'items-start justify-end text-left' : 'items-start justify-start text-left'
-  const copyPadding = align === 'center' ? 'px-6 py-10' : 'px-6 py-12 sm:px-9 md:px-14 md:py-16'
+  const copyPadding =
+    align === 'center'
+      ? 'px-6 py-8'
+      : height === 'short'
+        ? 'px-6 py-8 sm:px-9 md:px-14 md:py-10'
+        : height === 'medium'
+          ? 'px-6 py-10 sm:px-9 md:px-14 md:py-12'
+          : 'px-6 py-12 sm:px-9 md:px-14 md:py-16'
 
   return (
     <section className={`relative overflow-hidden bg-bone ${heightClass}`}>
@@ -559,8 +573,13 @@ function ImageCallout({ image, title, text, align = 'left', href = '#', height =
       <div className="absolute inset-0 bg-black/55" />
       <div className={`relative mx-auto flex max-w-[1440px] ${heightClass} ${copyAlign} ${copyPadding}`}>
         <a href={href} className="image-copy max-w-[620px] text-white">
-          <p className="mb-3 font-serif text-[20px] font-normal uppercase leading-[1.35] tracking-[0.12em]">{title}</p>
-          <h3 className="text-[14px] font-normal leading-6">{text}</h3>
+          <p className="mb-3 font-serif text-[20px] font-light uppercase leading-[1.35] tracking-[0.12em]">{title}</p>
+          <h3 className="text-[14px] font-light leading-6">{text}</h3>
+          {cta && (
+            <span className="mt-5 inline-flex text-[11px] uppercase tracking-[0.2em] text-white underline underline-offset-4">
+              {cta}
+            </span>
+          )}
         </a>
       </div>
     </section>
@@ -630,13 +649,13 @@ function Press() {
 
 function HomeEditSection() {
   return (
-    <section className="relative min-h-[500px] overflow-hidden bg-bone md:min-h-[690px]">
+    <section className="relative min-h-[300px] overflow-hidden bg-bone md:min-h-[420px]">
       <img src={img.edit} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/25" />
-      <div className="relative mx-auto flex min-h-[500px] max-w-[1440px] items-start px-6 py-16 text-white sm:px-9 md:min-h-[690px] md:px-14 md:py-24">
+      <div className="relative mx-auto flex min-h-[300px] max-w-[1440px] items-start px-6 py-10 text-white sm:px-9 md:min-h-[420px] md:px-14 md:py-14">
         <a href="/portfolio" className="image-copy max-w-[640px]">
-          <p className="mb-3 font-serif text-[20px] font-normal uppercase leading-[1.35] tracking-[0.12em]">CURATED LIVING</p>
-          <h3 className="text-[14px] font-normal leading-6">
+          <p className="mb-3 font-serif text-[20px] font-light uppercase leading-[1.35] tracking-[0.12em]">CURATED LIVING</p>
+          <h3 className="text-[14px] font-light leading-6">
             Every project is a reflection of lifestyle curated, elevated, and built to endure.
           </h3>
         </a>
@@ -652,15 +671,21 @@ function InstagramSection() {
         <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-olive">INSTAGRAM</p>
-            <h2 className="font-serif text-[17px] font-normal leading-[1.35]">@iconicadesignstudio</h2>
+            <h2 className="font-serif text-[17px] font-light leading-[1.35]">@iconicadesignstudio</h2>
           </div>
           <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
             Follow on Instagram
           </a>
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="-mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:snap-none sm:grid-cols-3 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-6">
           {instagramPosts.map((post, index) => (
-            <a key={post} href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="group aspect-square overflow-hidden border border-ink/10 bg-bone">
+            <a
+              key={post}
+              href="https://www.instagram.com/iconicadesignstudio/"
+              target="_blank"
+              rel="noreferrer"
+              className="group aspect-square w-[70%] min-w-[70%] shrink-0 snap-start overflow-hidden border border-ink/10 bg-bone sm:w-auto sm:min-w-0 sm:shrink"
+            >
               <img src={post} alt={`Iconica Design Studio Instagram post ${index + 1}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
             </a>
           ))}
@@ -726,7 +751,7 @@ function PressPage() {
         <div className="flex items-start px-6 py-8 md:px-14 md:py-9">
           <div className="max-w-[640px] text-[14px] font-normal leading-6 text-ink/75">
             <p>
-              Iconica Design Studio’s press presence reflects Judi Teran’s perspective on timeless interiors, thoughtful execution, and residential spaces designed with clarity, beauty, and purpose.
+              Iconica Design Studioâ€™s press presence reflects Judi Teranâ€™s perspective on timeless interiors, thoughtful execution, and residential spaces designed with clarity, beauty, and purpose.
             </p>
           </div>
         </div>
@@ -784,7 +809,7 @@ function PressPage() {
         </div>
       </section>
 
-      <ImageCallout image={img.trade} title="PRESS INQUIRIES" text="For interviews, features, and media requests, contact Iconica Design Studio." align="right" />
+      <ImageCallout image={img.trade} title="PRESS INQUIRIES" text="For interviews, features, and media requests, contact Iconica Design Studio." align="right" height="short" href="/contact" cta="Contact Studio" />
     </>
   )
 }
@@ -994,6 +1019,214 @@ function ProductPage({ product }) {
   )
 }
 
+const blogPosts = [
+  {
+    slug: 'lorem-ipsum-one',
+    title: 'Lorem Ipsum Dolor Sit Amet',
+    category: 'Journal',
+    date: 'May 2026',
+    author: 'Iconica Design Studio',
+    readTime: '4 min read',
+    excerpt:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Sed posuere consectetur est at lobortis.',
+    image: img.storyOne,
+    body: [
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.',
+      'Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo. Curabitur blandit tempus porttitor. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.',
+      'Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.',
+    ],
+  },
+  {
+    slug: 'lorem-ipsum-two',
+    title: 'Consectetur Adipiscing Elit Tempor',
+    category: 'Process',
+    date: 'April 2026',
+    author: 'Iconica Design Studio',
+    readTime: '5 min read',
+    excerpt:
+      'Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo.',
+    image: img.storyTwo,
+    body: [
+      'Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo. Sed posuere consectetur est at lobortis. Cum sociis natoque penatibus et magnis dis parturient montes.',
+      'Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.',
+      'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.',
+    ],
+  },
+  {
+    slug: 'lorem-ipsum-three',
+    title: 'Vivamus Sagittis Lacus Vel Augue',
+    category: 'Materials',
+    date: 'March 2026',
+    author: 'Iconica Design Studio',
+    readTime: '3 min read',
+    excerpt:
+      'Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.',
+    image: img.storyThree,
+    body: [
+      'Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod.',
+      'Nulla vitae elit libero, a pharetra augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper.',
+      'Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.',
+    ],
+  },
+]
+
+function BlogSection() {
+  return (
+    <section className="border-b border-ink bg-[#fbfaf7] px-4 py-12 md:px-7 md:py-16">
+      <div className="mx-auto max-w-[1480px]">
+        <div className="mb-9 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-olive">JOURNAL</p>
+            <h2 className="font-serif text-[20px] font-light leading-[1.35]">From the Studio</h2>
+          </div>
+          <a href="/journal" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
+            Read the Journal
+          </a>
+        </div>
+        <div className="grid gap-8 md:grid-cols-3">
+          {blogPosts.map((post) => (
+            <article key={post.slug} className="group">
+              <a href={`/journal/${post.slug}`} className="block aspect-[4/3] overflow-hidden border border-ink/15 bg-bone">
+                <img src={post.image} alt={post.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+              </a>
+              <div className="pt-5">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{post.category} / {post.date}</p>
+                <h3 className="mt-3 font-serif text-[18px] font-light leading-[1.35]">{post.title}</h3>
+                <p className="mt-3 text-[14px] font-light leading-6 text-ink/70">{post.excerpt}</p>
+                <a href={`/journal/${post.slug}`} className="mt-4 inline-flex text-[10px] uppercase tracking-[0.18em] underline underline-offset-4">
+                  Read More
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function JournalPage() {
+  return (
+    <>
+      <section className="grid border-b border-ink bg-porcelain md:grid-cols-[0.9fr_1.1fr]">
+        <div className="flex items-start px-6 py-8 md:border-r md:px-14 md:py-9">
+          <div className="max-w-[560px]">
+            <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">JOURNAL</p>
+            <h1 className="font-serif text-[17px] font-light leading-[1.45]">
+              Notes from the studio on process, materials, and projects.
+            </h1>
+          </div>
+        </div>
+        <div className="flex items-start px-6 py-8 md:px-14 md:py-9">
+          <div className="max-w-[640px] text-[14px] font-light leading-6 text-ink/75">
+            <p>
+              A growing record of ideas, references, and details that shape the way Iconica Design Studio works.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-ink bg-[#fbfaf7] px-4 py-12 md:px-7 md:py-16">
+        <div className="mx-auto max-w-[1480px]">
+          <div className="grid gap-10 md:grid-cols-3">
+            {blogPosts.map((post) => (
+              <article key={post.slug} className="group">
+                <a href={`/journal/${post.slug}`} className="block aspect-[4/3] overflow-hidden border border-ink/15 bg-bone">
+                  <img src={post.image} alt={post.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+                </a>
+                <div className="pt-5">
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{post.category} / {post.date}</p>
+                  <h2 className="mt-3 font-serif text-[18px] font-light leading-[1.35]">{post.title}</h2>
+                  <p className="mt-3 text-[14px] font-light leading-6 text-ink/70">{post.excerpt}</p>
+                  <a href={`/journal/${post.slug}`} className="mt-4 inline-flex text-[10px] uppercase tracking-[0.18em] underline underline-offset-4">
+                    Read More
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+
+function BlogPostPage({ post }) {
+  if (!post) {
+    return (
+      <section className="border-b border-ink bg-porcelain px-5 py-20 md:px-7">
+        <div className="mx-auto max-w-[900px]">
+          <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">JOURNAL</p>
+          <h1 className="font-serif text-[17px] font-light leading-[1.45]">Article not found.</h1>
+          <a href="/journal" className="mt-7 inline-flex text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
+            Back to Journal
+          </a>
+        </div>
+      </section>
+    )
+  }
+
+  const relatedPosts = blogPosts.filter((item) => item.slug !== post.slug).slice(0, 2)
+
+  return (
+    <>
+      <section className="relative min-h-[360px] border-b border-ink md:min-h-[520px]">
+        <img src={post.image} alt={post.title} decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-black/20" />
+        <div className="relative mx-auto flex min-h-[360px] max-w-[1480px] items-end px-5 py-10 text-white sm:px-6 md:min-h-[520px] md:px-14 md:py-14">
+          <div className="image-copy max-w-[720px]">
+            <p className="mb-4 text-[11px] uppercase tracking-[0.24em]">{post.category} / {post.date}</p>
+            <h1 className="font-serif text-[22px] font-light leading-[1.25] md:text-[34px]">{post.title}</h1>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-ink bg-[#fbfaf7] px-6 py-12 md:px-14 md:py-20">
+        <div className="mx-auto grid max-w-[1080px] gap-10 md:grid-cols-[0.32fr_0.68fr]">
+          <aside className="text-[11px] uppercase tracking-[0.2em] text-ink/60">
+            <p>{post.author}</p>
+            <p className="mt-3">{post.readTime}</p>
+            <a href="/journal" className="mt-8 inline-flex text-[10px] tracking-[0.2em] underline underline-offset-4">
+              Back to Journal
+            </a>
+          </aside>
+          <div className="max-w-[640px] space-y-6 text-[15px] font-light leading-7 text-ink/80">
+            {post.body.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {relatedPosts.length > 0 && (
+        <section className="border-b border-ink bg-bone px-4 py-12 md:px-7 md:py-16">
+          <div className="mx-auto max-w-[1480px]">
+            <div className="mb-9 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+              <h2 className="font-serif text-[17px] font-light leading-[1.35]">CONTINUE READING</h2>
+              <a href="/journal" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
+                View All Posts
+              </a>
+            </div>
+            <div className="grid gap-8 md:grid-cols-2">
+              {relatedPosts.map((item) => (
+                <article key={item.slug} className="group">
+                  <a href={`/journal/${item.slug}`} className="block aspect-[16/10] overflow-hidden border border-ink/15 bg-porcelain">
+                    <img src={item.image} alt={item.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+                  </a>
+                  <div className="pt-5">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{item.category} / {item.date}</p>
+                    <h3 className="mt-3 font-serif text-[18px] font-light leading-[1.35]">{item.title}</h3>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </>
+  )
+}
+
 const instagramPosts = [
   img.hero,
   img.intro,
@@ -1031,65 +1264,40 @@ function InstagramGridSection() {
 function PortfolioPage() {
   return (
     <>
-      <section className="border-b border-ink bg-porcelain px-5 py-8 md:px-7 md:py-9">
-        <div className="mx-auto grid max-w-[1480px] gap-7 md:grid-cols-[0.9fr_1.1fr] md:items-start md:gap-10">
-          <div className="max-w-[560px]">
-            <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">PORTFOLIO</p>
-            <h1 className="font-serif text-[17px] font-normal leading-[1.45]">
-              A selection of recent residential and commercial projects that reflect our integrated approach to design and build.
-            </h1>
-          </div>
-          <div className="max-w-[640px] text-[14px] font-normal leading-6 text-ink/75">
-            <p>
-              Each project is composed through material honesty, refined construction, and a clear sense of atmosphere. Explore selected work from Iconica Design Studio below.
-            </p>
-          </div>
+      <section className="bg-porcelain px-5 py-10 md:px-7 md:py-12">
+        <div className="mx-auto max-w-[1480px]">
+          <p className="mb-4 text-[11px] uppercase tracking-[0.24em] text-olive">PORTFOLIO</p>
+          <h1 className="max-w-[720px] font-serif text-[20px] font-light leading-[1.4] md:text-[24px]">
+            Selected residential and commercial projects.
+          </h1>
         </div>
       </section>
 
-      <section className="border-b border-ink bg-porcelain px-4 py-10 md:px-7 md:py-16">
+      <section className="bg-porcelain px-4 pb-10 md:px-7 md:pb-14">
         <div className="mx-auto max-w-[1480px]">
-          <div className="mb-10 flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
-            <h2 className="font-serif text-[17px] font-normal leading-[1.35]">SELECTED PROJECTS</h2>
-            <p className="max-w-[520px] text-[14px] font-normal leading-6 text-ink/65">
-              Image-led project previews sourced from the current Iconica image library.
-            </p>
-          </div>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-x-3 gap-y-6 md:grid-cols-3 md:gap-x-4">
             {portfolioProjects.map((project) => (
               <article key={project.title} className="group">
-                <a href={`/portfolio/${project.slug}`} className="block overflow-hidden border border-ink/20 bg-bone">
+                <a href={`/portfolio/${project.slug}`} className="block overflow-hidden bg-bone">
                   <img src={project.images[0]} alt={project.title} loading="lazy" decoding="async" className="aspect-[4/5] h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
                 </a>
-                <div className="pt-5">
-                  <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-olive">{project.category}</p>
-                  <h3 className="font-serif text-[17px] font-normal leading-[1.35]">{project.title}</h3>
-                  <p className="mt-4 text-[14px] font-normal leading-6 text-ink/75">{project.intro}</p>
-                  <a href={`/portfolio/${project.slug}`} className="mt-6 inline-flex text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
-                    View Project
-                  </a>
-                  <div className="mt-6 grid grid-cols-3 gap-2">
-                    {project.images.slice(1, 4).map((image) => (
-                      <div key={image} className="aspect-square overflow-hidden border border-ink/10 bg-bone">
-                        <img src={image} alt={`${project.title} detail`} loading="lazy" decoding="async" className="h-full w-full object-cover" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <a href={`/portfolio/${project.slug}`} className="mt-3 block font-serif text-[15px] font-light leading-[1.35] text-ink">
+                  {project.title}
+                </a>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative min-h-[340px] border-b border-ink md:min-h-[520px]">
+      <section className="relative min-h-[240px] border-b border-ink md:min-h-[340px]">
         <img src={portfolioProjects[2].images[0]} alt="Portfolio closing project" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/55 to-black/30" />
-        <div className="relative mx-auto flex min-h-[340px] max-w-[1480px] items-end justify-end px-5 py-10 pl-7 text-white sm:px-6 sm:pl-9 md:min-h-[520px] md:px-7 md:py-12">
+        <div className="relative mx-auto flex min-h-[240px] max-w-[1480px] items-end justify-end px-5 py-7 pl-7 text-white sm:px-6 sm:pl-9 md:min-h-[340px] md:px-7 md:py-9">
           <div className="image-copy max-w-[520px]">
             <p className="mb-3 text-[11px] uppercase tracking-[0.24em]">START A PROJECT</p>
             <h2 className="font-serif text-[17px] font-normal leading-[1.45]">Tell us about your project and we'll be in touch within 24 hours to arrange a call.</h2>
-            <ScheduleButton className="mt-8 text-white hover:text-white/75" />
+            <ScheduleButton className="mt-6 text-white hover:text-white/75" />
           </div>
         </div>
       </section>
@@ -1114,14 +1322,13 @@ function ProjectPage({ project }) {
 
   return (
     <>
-      <section className="relative min-h-[420px] border-b border-ink md:min-h-[720px]">
-        <img src={project.images[0]} alt={project.title} decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/55 to-black/30" />
-        <div className="relative mx-auto flex min-h-[420px] max-w-[1480px] items-end px-5 py-10 pl-7 text-white sm:px-6 sm:pl-9 md:min-h-[720px] md:px-7 md:py-12">
+      <section className="relative min-h-[320px] border-b border-ink md:min-h-[440px]">
+        <img src={project.images[0]} alt={project.title} decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-center" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-black/20" />
+        <div className="relative mx-auto flex min-h-[320px] max-w-[1480px] items-end px-5 py-8 pl-7 text-white sm:px-6 sm:pl-9 md:min-h-[440px] md:px-7 md:py-10">
           <div className="image-copy max-w-[620px]">
-            <p className="mb-3 text-[11px] uppercase tracking-[0.24em]">{project.category}</p>
-            <h1 className="font-serif text-[17px] font-normal leading-[1.45] md:text-[25px]">{project.title}</h1>
-            <p className="mt-5 max-w-[520px] text-[14px] font-normal leading-6 text-white/80">{project.intro}</p>
+            <h1 className="font-serif text-[20px] font-light leading-[1.35] md:text-[26px]">{project.title}</h1>
+            <p className="mt-3 max-w-[520px] text-[14px] font-light leading-6 text-white/85">{project.intro}</p>
           </div>
         </div>
       </section>
@@ -1141,17 +1348,17 @@ function ProjectPage({ project }) {
         </div>
       </section>
 
-      <section className="border-b border-ink bg-porcelain px-4 py-10 md:px-7 md:py-16">
+      <section className="border-b border-ink bg-porcelain px-4 py-8 md:px-7 md:py-10">
         <div className="mx-auto max-w-[1480px]">
-          <div className="mb-10 flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
-            <h2 className="font-serif text-[17px] font-normal leading-[1.35]">PROJECT GALLERY</h2>
+          <div className="mb-6 flex flex-col items-start justify-between gap-3 md:flex-row md:items-end">
+            <h2 className="font-serif text-[15px] font-light leading-[1.35]">PROJECT GALLERY</h2>
             <a href="/portfolio" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
               Back to Portfolio
             </a>
           </div>
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-2 md:grid-cols-2 md:gap-3">
             {project.images.map((image, index) => (
-              <a key={image} href={image} target="_blank" rel="noreferrer" className={`group block overflow-hidden border border-ink/20 bg-bone ${index === 0 ? 'md:col-span-2' : ''}`}>
+              <a key={image} href={image} target="_blank" rel="noreferrer" className={`group block overflow-hidden bg-bone ${index === 0 ? 'md:col-span-2' : ''}`}>
                 <img src={image} alt={`${project.title} gallery ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" className={`${index === 0 ? 'aspect-[16/9]' : 'aspect-[4/3]'} h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]`} />
               </a>
             ))}
@@ -1418,24 +1625,19 @@ function ContactPage() {
 
 function Footer() {
   const links = [
-    { label: 'Instagram', href: 'https://www.instagram.com/iconicadesignstudio/' },
-    { label: 'Contact', href: '/contact' },
-    { label: 'Returns', href: '/contact' },
-    { label: 'Shop', href: '/shop' },
     { label: 'Portfolio', href: '/portfolio' },
-    { label: 'Press', href: '/press' },
+    { label: 'Shop', href: '/shop' },
     { label: 'Studio', href: '/studio' },
-    { label: 'Services', href: '/contact' },
-    { label: 'Trade Program', href: '/contact' },
-    { label: 'Project Inquiry', href: '/contact' },
-    { label: 'Concierge', href: '/contact' },
+    { label: 'Press', href: '/press' },
+    { label: 'Contact', href: '/contact' },
+    { label: 'Instagram', href: 'https://www.instagram.com/iconicadesignstudio/' },
   ]
   return (
     <footer className="bg-[#f1eee5] text-ink/75">
       <div className="mx-auto grid max-w-[1480px] gap-12 px-6 py-16 sm:px-10 md:px-14 md:py-20 lg:grid-cols-[1fr_1.08fr]">
-        <div className="grid max-w-[720px] grid-cols-2 gap-x-12 gap-y-4 text-[14px] font-normal uppercase leading-6 tracking-[0.02em] sm:grid-cols-4">
+        <div className="flex max-w-[280px] flex-col gap-3 text-[14px] font-normal uppercase leading-6 tracking-[0.02em]">
           {links.map((link) => (
-            <a key={link.label} href={link.href} className="hover:text-ink hover:underline hover:underline-offset-4">
+            <a key={link.label} href={link.href} className="hover:text-ink">
               {link.label}
             </a>
           ))}
@@ -1462,7 +1664,7 @@ function Footer() {
 function App() {
   const { isVisible, progress, startLoader } = usePageLoader()
   const [path, setPath] = useState(window.location.pathname)
-  useSmoothReveals()
+  useSmoothReveals(path)
 
   useEffect(() => {
     function handleInternalLink(event) {
@@ -1519,48 +1721,59 @@ function App() {
   const isPressPage = path.replace(/\/$/, '') === '/press'
   const isShopPage = path.replace(/\/$/, '') === '/shop'
   const isContactPage = path.replace(/\/$/, '') === '/contact'
+  const isJournalPage = path.replace(/\/$/, '') === '/journal'
   const projectSlug = path.match(/^\/portfolio\/([^/]+)\/?$/)?.[1]
   const productSlug = path.match(/^\/shop\/([^/]+)\/?$/)?.[1]
+  const journalSlug = path.match(/^\/journal\/([^/]+)\/?$/)?.[1]
   const activeProject = portfolioProjects.find((project) => project.slug === projectSlug)
   const activeProduct = shopProducts.find((product) => product.slug === productSlug)
+  const activeBlogPost = blogPosts.find((post) => post.slug === journalSlug)
 
   return (
     <>
       <LoadingScreen isVisible={isVisible} progress={progress} />
+      <ConsultationWidget />
       <main className="min-h-screen bg-porcelain text-ink">
-        <ConsultationWidget />
         <Header />
-        {projectSlug ? (
-          <ProjectPage project={activeProject} />
-        ) : productSlug ? (
-          <ProductPage product={activeProduct} />
-        ) : isPortfolioPage ? (
-          <PortfolioPage />
-        ) : isPressPage ? (
-          <PressPage />
-        ) : isShopPage ? (
-          <ShopPage />
-        ) : isContactPage ? (
-          <ContactPage />
-        ) : isStudioPage ? (
-          <StudioPage />
-        ) : (
-          <>
-            <Hero />
-            <FeatureRow />
-            <ImageCallout
-              image={img.canoa}
-              title="PORTFOLIO"
-              text="A selection of residential and commercial projects shaped through refined materials, thoughtful construction, and layered interior detail."
-              href="/portfolio"
-            />
-            <FeaturedProducts />
-            <ImageCallout image={img.trade} title="READY TO START YOUR PROJECT?" text="Let's talk about what you have in mind." align="right" height="short" />
-            <Press />
-            <HomeEditSection />
-            <InstagramSection />
-          </>
-        )}
+        <div key={path} className="page-enter">
+          {projectSlug ? (
+            <ProjectPage project={activeProject} />
+          ) : productSlug ? (
+            <ProductPage product={activeProduct} />
+          ) : journalSlug ? (
+            <BlogPostPage post={activeBlogPost} />
+          ) : isJournalPage ? (
+            <JournalPage />
+          ) : isPortfolioPage ? (
+            <PortfolioPage />
+          ) : isPressPage ? (
+            <PressPage />
+          ) : isShopPage ? (
+            <ShopPage />
+          ) : isContactPage ? (
+            <ContactPage />
+          ) : isStudioPage ? (
+            <StudioPage />
+          ) : (
+            <>
+              <Hero />
+              <FeatureRow />
+              <ImageCallout
+                image={img.canoa}
+                title="PORTFOLIO"
+                text="A selection of residential and commercial projects shaped through refined materials, thoughtful construction, and layered interior detail."
+                href="/portfolio"
+                cta="View Our Work"
+                height="medium"
+              />
+              <FeaturedProducts />
+              <ImageCallout image={img.trade} title="READY TO START YOUR PROJECT?" text="Let's talk about what you have in mind." align="right" height="short" />
+              <BlogSection />
+              <HomeEditSection />
+              <InstagramSection />
+            </>
+          )}
+        </div>
         <Footer />
       </main>
     </>
