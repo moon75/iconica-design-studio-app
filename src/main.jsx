@@ -920,7 +920,7 @@ function ShopPage() {
         </div>
       </section>
 
-      <ImageCallout image={img.edit} title="SOURCING SUPPORT" text="Looking for a specific piece? Our studio can source furniture, lighting, and materials for your project." align="right" />
+      <ImageCallout image={img.edit} title="SOURCING SUPPORT" text="Looking for a specific piece? Our studio can source furniture, lighting, and materials for your project." align="right" height="short" href="/contact" cta="Request Sourcing" />
     </>
   )
 }
@@ -1498,7 +1498,7 @@ function StudioPage() {
         </div>
       </section>
 
-      <ImageCallout image={img.edit} title="START A PROJECT" text="Tell us about your project and we'll be in touch within 24 hours to arrange a call." align="right" />
+      <ImageCallout image={img.edit} title="START A PROJECT" text="Tell us about your project and we'll be in touch within 24 hours to arrange a call." align="right" height="short" href="/contact" cta="Start a Project" />
     </>
   )
 }
