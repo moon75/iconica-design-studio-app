@@ -38,7 +38,7 @@ const pressFeatures = [
     date: 'May 23, 2025',
     type: 'Interview',
     url: 'https://sancarloslife.com/interior-design-advice-for-your-san-carlos-home/',
-    image: 'https://sancarloslife.com/wp-content/uploads/2025/05/Interior-Design-Advice-from-Judi-Teran-1-1080x675.png',
+    image: '/images/press/sanscarlos life .png',
     excerpt:
       "San Carlos Life caught up with local interior designer Judi Teran to discuss thoughtful, modern interiors, trend direction, and how homeowners can create spaces that feel current, enduring, personal, and livable.",
   },
@@ -48,7 +48,7 @@ const pressFeatures = [
     date: 'Member since 2025',
     type: 'Professional Profile',
     url: 'https://scbng.org/members/judi-teran',
-    image: 'https://scbng.org/Portals/4/Images/Members/judi-teran-2025.jpg',
+    image: '/images/press/sanscarlos business .png',
     excerpt:
       'Judi Teran is featured as a high-end interior designer and creative strategist working between the Bay Area, Los Angeles, and New York, known for bold aesthetics, thoughtful execution, and visionary spaces.',
   },
@@ -526,21 +526,18 @@ function Hero() {
 function FeatureRow() {
   return (
     <section className="bg-[#fbfaf7] px-6 py-10 sm:px-10 md:py-12 lg:px-7">
-      <div className="mx-auto grid max-w-[1100px] gap-8 lg:grid-cols-[minmax(0,0.98fr)_minmax(320px,0.82fr)] lg:items-center lg:gap-9">
+      <div className="mx-auto grid max-w-[1100px] gap-8 md:grid-cols-[minmax(0,0.98fr)_minmax(280px,0.82fr)] md:items-center md:gap-9">
         <div className="overflow-hidden bg-bone">
           <img src={img.bowl} alt="Iconica Design Studio project detail" loading="lazy" decoding="async" className="aspect-square h-full w-full object-cover" />
         </div>
-        <div className="flex items-center bg-[#fbfaf7] lg:min-h-[510px]">
+        <div className="flex items-center bg-[#fbfaf7] md:min-h-[510px]">
           <div className="max-w-[560px]">
             <p className="mb-4 !font-serif !text-[16px] !leading-[1.35] font-normal uppercase tracking-[0.12em] text-ink/75">DESIGN + BUILD</p>
-            <h2 className="!font-serif !text-[16px] !leading-[1.35] font-normal uppercase tracking-[0.12em] text-ink/75">
+            <h2 className="!font-serif !text-[16px] !leading-[1.45] font-normal tracking-[0.02em] text-ink/75">
               Residential and boutique commercial interiors rooted in atmosphere, materiality, and experience.
             </h2>
-            <p className="mt-5 max-w-[500px] text-[14px] font-normal leading-6 text-ink/70">
-              We bring vision to life from the earliest concept to the final layer of finish.
-            </p>
-            <a href="/studio" className="mt-6 inline-flex text-[11px] uppercase tracking-[0.16em] text-ink underline underline-offset-4">
-              View Studio
+            <a href="/studio" className="mt-6 inline-block text-[11px] uppercase tracking-[0.16em] text-ink underline underline-offset-4 decoration-1">
+              About the studio
             </a>
           </div>
         </div>
@@ -665,7 +662,7 @@ function InstagramSection() {
             Follow on Instagram
           </a>
         </div>
-        <div className="-mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:snap-none sm:grid-cols-3 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-6">
+        <div className="-mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:snap-none sm:grid-cols-6 sm:gap-2 sm:overflow-visible sm:px-0 sm:pb-0">
           {instagramPosts.map((post, index) => (
             <a
               key={post}
@@ -685,42 +682,25 @@ function InstagramSection() {
 
 function PressPage() {
   const leadFeature = pressFeatures[0]
-  const pressCards = [pressFeatures[0], pressFeatures[1], pressFeatures[0]]
 
   return (
     <>
-      <section className="bg-[#fbfaf7] px-6 py-14 text-center sm:px-10 md:px-14 md:py-20">
-        <div className="mx-auto max-w-[1100px]">
-          <p className="mb-5 font-serif text-[20px] font-normal uppercase leading-[1.35] tracking-[0.18em] text-ink">AS SEEN IN</p>
-          <p className="text-[14px] font-normal leading-6 text-ink/75">
-            Recognition, interviews, and community features from publications and professional networks.
-          </p>
-          <p className="mt-4 text-[14px] font-normal leading-6 text-ink/75">
-            Iconica Design Studio's press presence reflects Judi Teran's perspective on timeless interiors, thoughtful execution, and residential spaces designed with clarity, beauty, and purpose.
-          </p>
+      <section className="bg-[#fbfaf7] px-6 pt-16 pb-12 text-center sm:px-10 md:px-14 md:pt-24 md:pb-16">
+        <div className="mx-auto max-w-[1220px]">
+          <p className="font-serif text-[20px] font-normal uppercase leading-[1.35] tracking-[0.18em] text-ink">AS SEEN IN</p>
         </div>
       </section>
 
-      <section className="bg-[#fbfaf7] px-6 pb-16 sm:px-10 md:px-14 md:pb-24">
-        <div className="mx-auto grid max-w-[1100px] gap-14 md:grid-cols-3 md:items-start xl:gap-24">
-          {pressCards.map((feature, index) => (
-            <article key={`${feature.url}-${index}`} className={`group mx-auto flex h-[760px] w-full max-w-[410px] flex-col border border-transparent bg-[#fbfaf7] px-8 py-9 text-center transition duration-300 hover:border-ink/60 ${index === 1 ? 'md:mt-10' : ''}`}>
-              <div className="min-h-[126px]">
-                <h3 className="font-serif text-[20px] font-normal uppercase leading-[1.35] tracking-[0.04em] text-ink">{feature.title}</h3>
-                <p className="mt-3 text-[11px] font-normal uppercase tracking-[0.12em] text-ink/60">
-                  {feature.type} / {feature.publication}
-                </p>
-              </div>
-              <a href={feature.url} target="_blank" rel="noreferrer" className="mx-auto flex h-[300px] w-full items-center justify-center overflow-hidden bg-white">
-                <img src={feature.image} alt={feature.title} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+      <section className="bg-[#fbfaf7] px-6 pb-20 sm:px-10 md:px-14 md:pb-28">
+        <div className="mx-auto flex max-w-[1220px] flex-wrap justify-center gap-x-20 gap-y-20 lg:gap-x-28">
+          {pressFeatures.map((feature, index) => (
+            <article key={feature.url} className="group w-[min(270px,100%)]">
+              <a href={feature.url} target="_blank" rel="noreferrer" className="block h-[390px] overflow-hidden bg-[#fbfaf7]">
+                <img src={feature.image} alt={feature.publication} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.02]" />
               </a>
-              <p className="mx-auto mt-8 max-w-[310px] text-[14px] font-normal leading-6 text-ink/70">{feature.excerpt}</p>
-              <a href={feature.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex justify-center text-[10px] uppercase tracking-[0.18em] underline underline-offset-4">
-                Open Press Link
-              </a>
-              <div className="mt-auto pt-8">
-                <h2 className="font-serif text-[20px] font-normal uppercase leading-[1.35] tracking-[0.04em] text-ink/75">{feature.publication}</h2>
-                <p className="mt-2 text-[11px] font-normal uppercase tracking-[0.14em] text-ink/55">{feature.date}</p>
+              <div className="mt-9 text-left">
+                <h2 className="text-[15px] font-semibold uppercase leading-5 tracking-[0.03em] text-ink">{feature.publication}</h2>
+                <p className="mt-2 text-[14px] font-normal uppercase leading-5 tracking-normal text-ink/70">{feature.date}</p>
               </div>
             </article>
           ))}

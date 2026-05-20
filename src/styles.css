@@ -65,6 +65,23 @@ button:hover {
   opacity: 0.82;
 }
 
+.page-enter a[href]:not(.image-copy):not(:has(img)):not(:has(svg)):not(:has(picture)):not([aria-label]) {
+  text-decoration: underline;
+}
+
+header a,
+header a *,
+footer a,
+footer a *,
+.image-copy,
+a:has(img),
+a:has(svg),
+a:has(picture),
+a[aria-label] {
+  text-decoration-line: none !important;
+  background-image: none !important;
+}
+
 li,
 input,
 select,
@@ -124,23 +141,6 @@ a {
 
 .image-copy {
   text-shadow: none;
-}
-
-/* Animated underline for uppercase textlinks */
-a[class*="underline-offset-4"] {
-  background-image: linear-gradient(currentColor, currentColor);
-  background-size: 0% 1px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  text-decoration: none !important;
-  transition:
-    background-size 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-a[class*="underline-offset-4"]:hover {
-  background-size: 100% 1px;
-  opacity: 1;
 }
 
 /* Subtle image warm-up on hover within a group */
