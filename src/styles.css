@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Jost:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -17,13 +17,13 @@ html {
 body {
   margin: 0;
   background: #f5f2eb;
-  color: #171717;
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  font-weight: 300;
-  font-feature-settings: 'ss01', 'cv11';
+  color: rgb(51, 50, 50);
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: 0.005em;
   overflow: visible;
   width: 100%;
 }
@@ -65,14 +65,21 @@ button:hover {
   opacity: 0.82;
 }
 
-p,
 li,
 input,
 select,
 textarea,
 button {
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  font-weight: 300;
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+p {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 21px !important;
 }
 
 h1,
@@ -81,8 +88,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 300;
-  letter-spacing: 0.005em;
+  font-family: Jost, 'Segoe UI', system-ui, sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 20px !important;
+  line-height: 24px !important;
+  letter-spacing: 0;
 }
 
 button,
@@ -165,13 +175,14 @@ header nav a.hover\:underline:hover {
 }
 
 .schedule-consult {
-  color: #ffffff;
-  mix-blend-mode: difference;
-  isolation: isolate;
-  transition:
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    letter-spacing 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 360ms ease;
+  font-family: 'futura-pt', Jost, Futura, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1;
+  color: #000000;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  transition: none;
 }
 
 .schedule-consult:hover {
@@ -180,11 +191,11 @@ header nav a.hover\:underline:hover {
 }
 
 .schedule-consult.schedule-consult--side:hover {
-  transform: translate(2px, -50%);
+  transform: translateY(-50%);
 }
 
 .schedule-consult.schedule-consult--bottom:hover {
-  transform: translateY(-2px);
+  transform: none;
 }
 
 /* Scroll-reveal — slower, smoother, with subtle blur */

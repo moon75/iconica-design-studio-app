@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'Segoe UI', 'Arial', 'sans-serif'],
-        serif: ['Jost', 'Inter', 'Segoe UI', 'sans-serif'],
+        sans: ['"Segoe UI"', 'system-ui', '-apple-system', 'Roboto', '"Helvetica Neue"', '"Noto Sans"', '"Liberation Sans"', 'Arial', 'sans-serif'],
+        serif: ['Jost', '"Segoe UI"', 'system-ui', 'sans-serif'],
       },
       colors: {
         porcelain: '#f5f2eb',
