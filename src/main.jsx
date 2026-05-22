@@ -464,7 +464,7 @@ function ConsultationWidget() {
             <div className="grid md:grid-cols-[0.74fr_1fr]">
               <div className="hidden min-h-[520px] bg-ink px-10 py-12 text-porcelain md:flex md:flex-col md:justify-between">
                 <div>
-                  <p className="text-[11px] uppercase leading-5 tracking-[0.42em] text-porcelain/45">ICONICA DESIGN STUDIO</p>
+                  <p className="text-[11px] uppercase leading-5 tracking-[0.42em] text-porcelain/45">ICONICA DESIGN</p>
                   <h2 className="mt-10 font-serif text-[34px] font-normal leading-[1.2] tracking-normal">
                     Let's shape <span className="italic text-porcelain/55">your vision</span>
                   </h2>
@@ -541,7 +541,7 @@ function Header() {
     <header className="fixed left-0 right-0 top-0 z-30 bg-[#fbfaf7]/95 text-[#2b2a26] backdrop-blur">
       <div className="flex h-[62px] w-full items-center gap-4 px-5 sm:px-7 lg:px-10">
         <a href="/" className="min-w-0 flex-1 truncate font-serif text-[17px] font-normal uppercase tracking-[0.1em] text-ink lg:flex-none">
-          ICONICA DESIGN STUDIO
+          ICONICA DESIGN
         </a>
         <nav className="hidden flex-1 flex-wrap justify-center gap-x-6 gap-y-2 text-[12px] font-normal uppercase tracking-[0.14em] text-ink/65 xl:flex">
           {nav.map((item) => (
@@ -586,7 +586,7 @@ function Header() {
 function Hero() {
   return (
     <section className="relative min-h-[610px] overflow-hidden bg-bone md:min-h-[760px]">
-      <img src={img.hero} alt="Iconica Design Studio interior project" decoding="async" fetchPriority="high" className="hero-image absolute inset-0 h-full w-full object-cover" />
+      <img src={img.hero} alt="Iconica Design interior project" decoding="async" fetchPriority="high" className="hero-image absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-black/50" />
       <div className="relative mx-auto flex min-h-[610px] max-w-[1480px] items-center justify-center px-6 text-center text-white md:min-h-[760px] md:px-10">
         <div className="image-copy max-w-[760px]">
@@ -609,7 +609,7 @@ function FeatureRow() {
     <section className="bg-[#fbfaf7] px-6 py-10 sm:px-10 md:py-12 lg:px-7">
       <div className="mx-auto grid max-w-[1100px] gap-8 md:grid-cols-[minmax(0,0.98fr)_minmax(280px,0.82fr)] md:items-center md:gap-9">
         <div className="overflow-hidden bg-bone">
-          <img src={img.bowl} alt="Iconica Design Studio project detail" loading="lazy" decoding="async" className="aspect-square h-full w-full object-cover" />
+          <img src={img.bowl} alt="Iconica Design project detail" loading="lazy" decoding="async" className="aspect-square h-full w-full object-cover" />
         </div>
         <div className="flex items-center bg-[#fbfaf7] md:min-h-[510px]">
           <div className="max-w-[560px]">
@@ -752,7 +752,7 @@ function InstagramSection() {
               rel="noreferrer"
               className="group aspect-square w-[70%] min-w-[70%] shrink-0 snap-start overflow-hidden border border-ink/10 bg-bone sm:w-auto sm:min-w-0 sm:shrink"
             >
-              <img src={post} alt={`Iconica Design Studio Instagram post ${index + 1}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
+              <img src={post} alt={`Iconica Design Instagram post ${index + 1}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
             </a>
           ))}
         </div>
@@ -800,7 +800,7 @@ function PressPage() {
         <div className="flex items-start px-6 py-8 md:px-14 md:py-9">
           <div className="max-w-[640px] text-[14px] font-normal leading-6 text-ink/75">
             <p>
-              Iconica Design Studioâ€™s press presence reflects Judi Teranâ€™s perspective on timeless interiors, thoughtful execution, and residential spaces designed with clarity, beauty, and purpose.
+              Iconica Designâ€™s press presence reflects Judi Teranâ€™s perspective on timeless interiors, thoughtful execution, and residential spaces designed with clarity, beauty, and purpose.
             </p>
           </div>
         </div>
@@ -830,7 +830,7 @@ function PressPage() {
           <div className="mb-10 flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
             <h2 className="font-serif text-[17px] font-normal leading-[1.35]">AS SEEN IN</h2>
             <p className="max-w-[520px] text-[14px] font-normal leading-6 text-ink/65">
-              Press mentions and profiles connected to Judi Teran and Iconica Design Studio.
+              Press mentions and profiles connected to Judi Teran and Iconica Design.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
@@ -858,7 +858,7 @@ function PressPage() {
         </div>
       </section>
 
-      <ImageCallout image={img.trade} title="PRESS INQUIRIES" text="For interviews, features, and media requests, contact Iconica Design Studio." align="right" height="short" href="/contact" cta="Contact Studio" />
+      <ImageCallout image={img.trade} title="PRESS INQUIRIES" text="For interviews, features, and media requests, contact Iconica Design." align="right" height="short" href="/contact" cta="Contact Studio" />
     </>
   )
 }
@@ -876,7 +876,7 @@ function ShopPage() {
           <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">SHOP</p>
           <div className="max-w-[640px] text-[14px] font-normal leading-6 text-ink/75">
             <p>
-              A curated shop for Iconica Design Studio, organized around the pieces clients most often need: seating, tables, lighting, and storage with a refined residential point of view.
+              A curated shop for Iconica Design, organized around the pieces clients most often need: seating, tables, lighting, and storage with a refined residential point of view.
             </p>
           </div>
         </div>
@@ -1062,7 +1062,7 @@ const blogPosts = [
     title: 'Introducing The Latch Key: Forms That Hold Presence',
     category: 'Objects',
     date: 'May 2026',
-    author: 'Iconica Design Studio',
+    author: 'Iconica Design',
     readTime: '4 min read',
     excerpt:
       'A quiet study in sculptural objects, natural branches, and the kind of forms that bring structure and presence to a room.',
@@ -1078,7 +1078,7 @@ const blogPosts = [
     title: 'The Vesta Ceramic Lamp - Lighting By Canoa Lab',
     category: 'Lighting',
     date: 'April 2026',
-    author: 'Iconica Design Studio',
+    author: 'Iconica Design',
     readTime: '5 min read',
     excerpt:
       'A behind-the-scenes look at sculptural ceramic lamps, soft illumination, and lighting choices that add warmth without visual noise.',
@@ -1094,7 +1094,7 @@ const blogPosts = [
     title: 'The Year Of The Horse',
     category: 'Studio Notes',
     date: 'March 2026',
-    author: 'Iconica Design Studio',
+    author: 'Iconica Design',
     readTime: '3 min read',
     excerpt:
       'A sculptural arrangement celebrating movement, renewal, and natural elements woven into an interior gesture.',
@@ -1110,7 +1110,7 @@ const blogPosts = [
     title: 'Material Notes: Travertine, Grain, And Quiet Weight',
     category: 'Materials',
     date: 'February 2026',
-    author: 'Iconica Design Studio',
+    author: 'Iconica Design',
     readTime: '4 min read',
     excerpt:
       'A look at stone, wood, and tonal restraint as tools for building rooms that feel calm, grounded, and lasting.',
@@ -1126,7 +1126,7 @@ const blogPosts = [
     title: 'How We Layer A Room Without Overworking It',
     category: 'Process',
     date: 'January 2026',
-    author: 'Iconica Design Studio',
+    author: 'Iconica Design',
     readTime: '5 min read',
     excerpt:
       'Layering is less about adding more and more about choosing the right contrast between structure, softness, objects, and light.',
@@ -1142,7 +1142,7 @@ const blogPosts = [
     title: 'A Quiet Guide To Console Styling',
     category: 'Styling',
     date: 'December 2025',
-    author: 'Iconica Design Studio',
+    author: 'Iconica Design',
     readTime: '3 min read',
     excerpt:
       'Vessels, books, branches, and negative space can turn a simple console into a composed architectural moment.',
@@ -1198,7 +1198,7 @@ function BlogPage() {
           <h1 className="font-serif text-[16px] font-normal leading-[1.45] tracking-[0.04em] text-ink">STORIES</h1>
           <div className="blog-intro mx-auto mt-6 max-w-[640px] space-y-4 text-[14px] font-normal leading-6 text-ink/70">
             <p>
-              ICONICA DESIGN STUDIO collects notes on interiors, objects, materiality, and the quiet details that shape how a room feels. These stories trace the studio's approach to balance, contrast, atmosphere, and enduring design.
+              ICONICA DESIGN collects notes on interiors, objects, materiality, and the quiet details that shape how a room feels. These stories trace the studio's approach to balance, contrast, atmosphere, and enduring design.
             </p>
             <p>
               Browse our <a href="/shop" className="underline underline-offset-4">shop collection</a> and <a href="/portfolio" className="underline underline-offset-4">selected project work</a>.
@@ -1333,7 +1333,7 @@ function InstagramGridSection() {
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
           {instagramPosts.map((post, index) => (
             <a key={post} href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="group aspect-square overflow-hidden border border-ink/10 bg-bone">
-              <img src={post} alt={`Iconica Design Studio Instagram post ${index + 1}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
+              <img src={post} alt={`Iconica Design Instagram post ${index + 1}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
             </a>
           ))}
         </div>
@@ -1423,7 +1423,7 @@ function ProjectPage({ project }) {
           <div className="max-w-[680px] text-[14px] font-normal leading-6 text-ink/75">
             <p>{project.intro}</p>
             <p className="mt-5">
-              This portfolio page is built inside the React site, so visitors stay on Iconica Design Studio instead of being sent to the old Bluehost project pages.
+              This portfolio page is built inside the React site, so visitors stay on Iconica Design instead of being sent to the old Bluehost project pages.
             </p>
           </div>
         </div>
@@ -1455,15 +1455,21 @@ function ProjectPage({ project }) {
 const studioTeam = [
   {
     name: 'Jogie',
-    role: 'Executive Assistant to Judi Teran',
+    role: 'Studio Coordinator',
     image: img.jogie,
-    text: '',
+    text: "Driving alignment across the studio's priorities, operations, and client engagements. He oversees high-level coordination of schedules, communications, and project workflows, ensuring seamless execution and continuity across all touchpoints.",
   },
   {
     name: 'Nazia',
     role: 'Junior Designer + Architectural Drafter',
     image: img.teamOne,
     text: "Nazia brings technical expertise and creative support to the design team. She prepares detailed drawings, elevations, and permit-ready documents, while assisting in space planning, material boards, and design development.",
+  },
+  {
+    name: 'Maja',
+    role: 'Director of Finance & Business Operations',
+    image: img.teamTwo,
+    text: "Maja oversees the financial backbone of Iconica, managing bookkeeping, invoicing, procurement accounting, reconciliations, and internal systems. She ensures the business runs with clarity, accuracy, and efficiency.",
   },
 ]
 
@@ -1528,18 +1534,16 @@ function StudioPage() {
           <div className="mb-10">
             <h2 className="font-serif text-[16px] font-normal leading-[1.35]">THE TEAM</h2>
           </div>
-          <div className="grid gap-10 md:grid-cols-2 md:gap-16 md:justify-items-center">
+          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {studioTeam.map((member) => (
               <article key={member.name} className="group text-center transition duration-300">
-                <div className="mx-auto aspect-square w-[min(240px,70vw)] overflow-hidden rounded-full border border-ink/20 bg-bone shadow-sm md:w-[260px]">
+                <div className="mx-auto aspect-square w-[min(120px,28vw)] overflow-hidden rounded-full border border-ink/20 bg-bone shadow-sm md:w-[160px]">
                   <img src={member.image} alt={member.name} loading="lazy" decoding="async" className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.03]" />
                 </div>
-                <div className="mx-auto max-w-[380px] pt-6">
-                  <p className="text-[11px] uppercase leading-5 tracking-[0.2em] text-olive">{member.role}</p>
-                  <h3 className="mt-2 font-serif text-[16px] font-normal leading-[1.35]">{member.name}</h3>
-                  {member.text && (
-                    <p className="mt-4 text-[14px] font-normal leading-6 text-ink/75">{member.text}</p>
-                  )}
+                <div className="mx-auto max-w-[300px] pt-4">
+                  <p className="text-[10px] uppercase leading-4 tracking-[0.18em] text-olive">{member.role}</p>
+                  <h3 className="mt-2 font-serif text-[14px] font-normal leading-[1.3]">{member.name}</h3>
+                  <p className="mt-3 text-[12px] font-normal leading-5 text-ink/75">{member.text}</p>
                 </div>
               </article>
             ))}
@@ -1593,11 +1597,11 @@ function ContactPage() {
 
       <section className="grid border-b border-ink bg-porcelain lg:grid-cols-[0.95fr_1.05fr]">
         <div className="relative min-h-[360px] border-b border-ink lg:min-h-[760px] lg:border-b-0 lg:border-r">
-          <img src={img.hero} alt="Iconica Design Studio contact interior" decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={img.hero} alt="Iconica Design contact interior" decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/55 to-black/30" />
           <div className="image-copy relative flex min-h-[360px] items-center justify-center px-6 py-10 text-center text-white md:px-14 lg:min-h-[760px]">
             <div className="max-w-[380px]">
-              <p className="mb-3 text-[11px] uppercase tracking-[0.24em]">ICONICA DESIGN STUDIO</p>
+              <p className="mb-3 text-[11px] uppercase tracking-[0.24em]">ICONICA DESIGN</p>
               <p className="font-serif text-[16px] font-normal leading-[1.45]">
                 Interior design, renovation planning, and design-build support.
               </p>
@@ -1697,7 +1701,7 @@ function ServicesPage() {
 
       <section className="grid border-b border-ink bg-porcelain lg:grid-cols-[0.95fr_1.05fr]">
         <div className="relative min-h-[320px] border-b border-ink lg:min-h-[560px] lg:border-b-0 lg:border-r">
-          <img src={img.hero} alt="Iconica Design Studio services" decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={img.hero} alt="Iconica Design services" decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-black/35" />
         </div>
         <div className="flex items-center px-6 py-12 md:px-14 md:py-16">
@@ -1832,7 +1836,7 @@ function Footer() {
       <div className="mx-auto grid max-w-[1480px] gap-10 px-6 py-10 sm:px-10 md:grid-cols-3 md:gap-12 md:px-14 md:py-12">
         <div className="max-w-[320px]">
           <a href="/" className="font-serif text-[17px] font-normal uppercase leading-none tracking-[0.1em] text-ink">
-            ICONICA DESIGN STUDIO
+            ICONICA DESIGN
           </a>
           <p className="mt-3 text-[13px] leading-6">
             Commercial & residential interior design studio crafting refined, enduring spaces.
@@ -1864,7 +1868,7 @@ function Footer() {
       </div>
       <div className="border-t border-ink/10 px-6 py-4 sm:px-10 md:px-14">
         <div className="mx-auto flex max-w-[1480px] flex-col gap-2 text-[12px] uppercase tracking-[0.1em] text-ink/65 sm:flex-row sm:items-center sm:justify-between">
-          <span>(C) 2021 Iconica Design Studio</span>
+          <span>(C) 2021 Iconica Design</span>
           <span>All Rights Reserved</span>
         </div>
       </div>
