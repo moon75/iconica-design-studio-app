@@ -736,10 +736,7 @@ function InstagramSection() {
     <section className="border-b border-ink bg-porcelain px-5 py-10 sm:px-8 md:px-12 md:py-12">
       <div className="mx-auto max-w-[1480px]">
         <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-olive">INSTAGRAM</p>
-            <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="text-[11px] uppercase tracking-[0.18em] text-ink hover:underline underline-offset-4">@ICONICADESIGNSTUDIO</a>
-          </div>
+          <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="text-[11px] uppercase tracking-[0.18em] text-ink hover:underline underline-offset-4">@ICONICADESIGNSTUDIO</a>
           <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
             Follow on Instagram
           </a>
@@ -1247,10 +1244,7 @@ function InstagramGridSection() {
     <section className="border-b border-ink bg-porcelain px-5 py-10 sm:px-8 md:px-12 md:py-12">
       <div className="mx-auto max-w-[1480px]">
         <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-olive">INSTAGRAM</p>
-            <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="text-[11px] uppercase tracking-[0.18em] text-ink hover:underline underline-offset-4">@ICONICADESIGNSTUDIO</a>
-          </div>
+          <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="text-[11px] uppercase tracking-[0.18em] text-ink hover:underline underline-offset-4">@ICONICADESIGNSTUDIO</a>
           <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
             Follow on Instagram
           </a>
@@ -1723,19 +1717,14 @@ function Footer() {
   const linksSite = [
     { label: 'Portfolio', href: '/portfolio' },
     { label: 'Press', href: '/press' },
-    { label: 'Studio', href: '/studio' },
     { label: 'Blog', href: '/blog' },
     { label: 'Instagram', href: 'https://www.instagram.com/iconicadesignstudio/' },
-    { label: 'Shop', href: '/shop' },
-  ]
-  const linksServices = [
-    { label: 'Renovation Planning', href: '/services' },
-    { label: 'Furniture + Lighting Sourcing', href: '/services' },
-    { label: 'Styling + Photo Preparation', href: '/services' },
+    { label: 'Studio', href: '/studio' },
+    { label: 'Contact', href: '/contact' },
   ]
   return (
     <footer className="bg-[#f1eee5] text-ink/75">
-      <div className="mx-auto grid max-w-[1480px] gap-8 px-5 py-8 sm:gap-10 sm:px-8 md:grid-cols-[1fr_1.3fr_1.1fr_1fr] md:gap-8 md:px-12 md:py-10">
+      <div className="mx-auto grid max-w-[1480px] gap-8 px-5 py-8 sm:gap-10 sm:px-8 md:grid-cols-[1.2fr_1fr_1fr] md:gap-10 md:px-12 md:py-10">
         <div className="max-w-[360px]">
           <a href="/" className="font-serif text-[15px] font-normal uppercase leading-none tracking-[0.1em] text-ink md:text-[16px]">
             ICONICA DESIGN
@@ -1743,12 +1732,8 @@ function Footer() {
           <p className="mt-3 text-[12px] leading-5">
             Commercial & residential interior design studio crafting refined, enduring spaces.
           </p>
-          <div className="mt-4 flex flex-col gap-1 text-[11px] uppercase tracking-[0.14em]">
-            <a href="mailto:hello@iconicadesignstudio.com" className="hover:text-ink">hello@iconicadesignstudio.com</a>
-            <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="hover:text-ink">@ICONICADESIGNSTUDIO</a>
-          </div>
         </div>
-        <div className="grid auto-rows-min grid-cols-3 content-start gap-x-4 gap-y-3 self-start text-[12px] font-normal uppercase leading-5 tracking-[0.08em]">
+        <div className="grid auto-rows-min grid-cols-2 content-start gap-x-8 gap-y-3 self-start text-[12px] font-normal uppercase leading-5 tracking-[0.1em]">
           {linksSite.map((link) => {
             const isExternal = link.href.startsWith('http')
             return (
@@ -1757,11 +1742,6 @@ function Footer() {
               </a>
             )
           })}
-        </div>
-        <div className="flex flex-col gap-2 self-start text-[12px] font-normal uppercase leading-5 tracking-[0.1em]">
-          {linksServices.map((link) => (
-            <a key={link.label} href={link.href} className="hover:text-ink">{link.label}</a>
-          ))}
         </div>
         <form onSubmit={(event) => event.preventDefault()} className="w-full max-w-[360px]">
           <label className="block text-[12px] font-normal uppercase leading-5 tracking-[0.1em] text-ink/80" htmlFor="footer-email">
