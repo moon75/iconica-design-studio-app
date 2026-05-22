@@ -12,6 +12,9 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -24,13 +27,62 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: visible;
+  overflow-x: hidden;
   width: 100%;
+  min-width: 320px;
 }
 
 #root {
   min-height: 100vh;
   overflow-x: clip;
+}
+
+/* Responsive base: stop runaway media + long words from forcing horizontal scroll */
+img,
+video,
+svg,
+canvas,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+li,
+a {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Tap-friendly minimums on touch devices (44x44 per Apple HIG) */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 36px;
+  }
+  /* But don't inflate small inline links */
+  nav a,
+  footer a,
+  .schedule-consult {
+    min-height: 0;
+  }
+}
+
+/* Prevent iOS auto-zoom on form focus by forcing >=16px input font */
+@media (max-width: 640px) {
+  input:not([type='checkbox']):not([type='radio']),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
 }
 
 html.scroll-locked,
