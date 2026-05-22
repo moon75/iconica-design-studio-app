@@ -143,6 +143,11 @@ a {
   text-shadow: none;
 }
 
+.blog-page .blog-intro p {
+  font-size: 14px !important;
+  line-height: 24px !important;
+}
+
 /* Subtle image warm-up on hover within a group */
 .group:hover img {
   filter: brightness(1.02) saturate(1.04);
@@ -179,10 +184,11 @@ header nav a.hover\:underline:hover {
   font-weight: 300;
   font-size: 13px;
   line-height: 1;
-  color: #000000;
+  color: #ffffff;
   letter-spacing: 0.32em;
   text-transform: uppercase;
   transition: none;
+  mix-blend-mode: difference;
 }
 
 .schedule-consult:hover {

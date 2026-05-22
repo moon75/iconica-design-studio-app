@@ -26,9 +26,90 @@ const nav = [
   { label: 'PORTFOLIO', href: '/portfolio' },
   { label: 'SHOP', href: '/shop' },
   { label: 'PRESS', href: '/press' },
-  { label: 'SERVICES', href: '/contact' },
+  { label: 'BLOG', href: '/blog' },
+  { label: 'SERVICES', href: '/services' },
   { label: 'STUDIO', href: '/studio' },
   { label: 'CONTACT', href: '/contact' },
+]
+
+const studioServices = [
+  {
+    slug: 'residential',
+    name: 'Residential Interior Design',
+    category: 'Residential',
+    image: '/images/optimized/IMG_8125.JPG',
+    summary:
+      'Full-scope interiors for primary homes, secondary residences, and pied-à-terres. We shape layouts, finishes, and furnishings around how the home is actually lived in.',
+    deliverables: ['Concept direction', 'Floor plans + elevations', 'Finishes + material specification', 'Furniture + lighting plan', 'On-site coordination'],
+  },
+  {
+    slug: 'commercial',
+    name: 'Commercial & Hospitality',
+    category: 'Commercial',
+    image: '/images/optimized/IMG_0141.JPG',
+    summary:
+      'Boutique commercial interiors for hospitality, retail, and creative office. Built to hold daily use while maintaining a strong material and experiential point of view.',
+    deliverables: ['Brand-led concept', 'Tenant + landlord coordination', 'FF&E specification', 'Construction documentation', 'Install + styling'],
+  },
+  {
+    slug: 'design-build',
+    name: 'Design + Build Coordination',
+    category: 'Design + Build',
+    image: '/images/optimized/IMG_8122.JPG',
+    summary:
+      'A single point of accountability across design and construction. We bridge architects, contractors, and trades so the built result matches the drawn intent.',
+    deliverables: ['Trade vetting + onboarding', 'Construction administration', 'Site walks + punch lists', 'Schedule + budget tracking', 'Final closeout'],
+  },
+  {
+    slug: 'renovation-planning',
+    name: 'Renovation Planning',
+    category: 'Renovation',
+    image: '/images/optimized/IMG_3274.JPG',
+    summary:
+      'For owners of older homes who want a clear plan before opening walls. We translate ambitions into a phased, costed scope you can move forward on with confidence.',
+    deliverables: ['Existing conditions review', 'Scope definition + phasing', 'Permit pathway guidance', 'Preliminary budget framing', 'Trade introductions'],
+  },
+  {
+    slug: 'furniture-sourcing',
+    name: 'Furniture + Lighting Sourcing',
+    category: 'Sourcing',
+    image: '/images/optimized/IMG_0142.JPG',
+    summary:
+      'Curated sourcing for clients who have the architecture handled and need the layered, livable pieces that finish the room. Trade pricing where available.',
+    deliverables: ['Room-by-room edits', 'Vendor + lead-time research', 'Trade pricing pass-through', 'Procurement + tracking', 'White-glove install'],
+  },
+  {
+    slug: 'styling',
+    name: 'Styling + Photo Preparation',
+    category: 'Styling',
+    image: '/images/optimized/IMG_9907.JPG',
+    summary:
+      'Final-layer styling for completed homes, listings, and editorial features. Objects, art, greenery, and arrangement decisions that let the architecture read clearly.',
+    deliverables: ['Pre-shoot walkthrough', 'Objects + art sourcing', 'On-day styling team', 'Photographer coordination', 'Reset to live-in state'],
+  },
+]
+
+const serviceProcess = [
+  {
+    step: '01',
+    title: 'Discovery',
+    text: 'We start with a focused conversation about the space, the people in it, and the constraints around the project. No deliverables yet — just shared understanding.',
+  },
+  {
+    step: '02',
+    title: 'Proposal',
+    text: 'A written scope of work outlining phases, deliverables, fees, and what each side is responsible for. Nothing begins until this is mutually signed.',
+  },
+  {
+    step: '03',
+    title: 'Design',
+    text: 'Concept, layout, and material direction developed in rounds. We present in person where possible, and document everything for downstream trades.',
+  },
+  {
+    step: '04',
+    title: 'Delivery',
+    text: 'Procurement, construction administration, site coordination, and install. The studio stays involved through final closeout and styling.',
+  },
 ]
 
 const pressFeatures = [
@@ -510,11 +591,11 @@ function Hero() {
       <div className="relative mx-auto flex min-h-[610px] max-w-[1480px] items-center justify-center px-6 text-center text-white md:min-h-[760px] md:px-10">
         <div className="image-copy max-w-[760px]">
           <div className="hero-rise">
-            <h1 className="font-serif text-[17px] font-normal leading-[1.45] tracking-[0.04em]">
-              Welcome to Iconica Design
+            <h1 className="font-serif text-[17px] font-normal uppercase leading-[1.45] tracking-[0.08em]">
+              WELCOME TO ICONICA DESIGN
             </h1>
-            <p className="mt-3 text-[14px] font-normal leading-[1.5] tracking-[0.04em]">
-              Commercial & Residential Interior Design Studio
+            <p className="mt-3 text-[14px] font-normal uppercase leading-[1.5] tracking-[0.08em]">
+              COMMERCIAL & RESIDENTIAL INTERIOR DESIGN STUDIO
             </p>
           </div>
         </div>
@@ -549,22 +630,22 @@ function FeatureRow() {
 function ImageCallout({ image, title, text, align = 'left', href = '#', height = 'tall', cta }) {
   const heightClass =
     height === 'short'
-      ? 'min-h-[260px] md:min-h-[340px]'
+      ? 'min-h-[200px] md:min-h-[260px]'
       : height === 'medium'
         ? 'min-h-[360px] md:min-h-[480px]'
         : 'min-h-[520px] md:min-h-[760px]'
   const copyAlign = 'items-center justify-center text-center'
   const copyPadding =
-    height === 'short' ? 'px-6 py-8 md:py-10' : height === 'medium' ? 'px-6 py-10 md:py-12' : 'px-6 py-12 md:py-16'
+    height === 'short' ? 'px-6 py-6 md:py-8' : height === 'medium' ? 'px-6 py-10 md:py-12' : 'px-6 py-12 md:py-16'
 
   return (
     <section className={`relative overflow-hidden bg-bone ${heightClass}`}>
       <img src={image} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-black/55" />
       <div className={`relative mx-auto flex max-w-[1440px] ${heightClass} ${copyAlign} ${copyPadding}`}>
-        <a href={href} className="image-copy max-w-[620px] text-white">
+        <a href={href} className="image-copy max-w-[440px] text-white">
           <h3 className="mb-3 uppercase tracking-[0.12em]">{title}</h3>
-          <p>{text}</p>
+          <p className="text-[14px] leading-6">{text}</p>
           {cta && (
             <span className="mt-5 inline-flex text-[11px] uppercase tracking-[0.2em] text-white underline underline-offset-4">
               {cta}
@@ -593,7 +674,7 @@ function FeaturedProducts() {
                 </a>
                 <div className="pt-5">
                   <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{product.category}</p>
-                  <h3 className="mt-3 font-serif text-[20px] font-normal leading-[1.35]">{product.name}</h3>
+                  <h3 className="mt-3 font-serif text-[20px] font-normal uppercase leading-[1.35]">{product.name}</h3>
                   <p className="mt-3 text-[14px] font-normal leading-6 text-ink/65">{product.detail}</p>
                   <a href={`/shop/${product.slug}`} className="mt-4 inline-flex text-[10px] uppercase tracking-[0.16em] underline underline-offset-4">
                     View
@@ -656,7 +737,7 @@ function InstagramSection() {
         <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-olive">INSTAGRAM</p>
-            <h2 className="font-serif text-[17px] font-normal leading-[1.35]">@iconicadesignstudio</h2>
+            <h2 className="font-serif text-[16px] font-normal uppercase tracking-[0.04em] leading-[1.35]">@ICONICADESIGNSTUDIO</h2>
           </div>
           <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
             Follow on Instagram
@@ -790,16 +871,9 @@ function ShopPage() {
 
   return (
     <>
-      <section className="grid border-b border-ink bg-porcelain md:grid-cols-[0.85fr_1.15fr]">
-        <div className="flex items-start px-6 py-8 md:border-r md:px-14 md:py-9">
-          <div className="max-w-[560px]">
-            <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">SHOP</p>
-            <h1 className="font-serif text-[17px] font-normal leading-[1.45]">
-              Furniture, lighting, and finishing pieces selected for considered interiors.
-            </h1>
-          </div>
-        </div>
-        <div className="flex items-start px-6 py-8 md:px-14 md:py-9">
+      <section className="border-b border-ink bg-porcelain px-6 py-8 md:px-14 md:py-9">
+        <div className="mx-auto max-w-[1480px]">
+          <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">SHOP</p>
           <div className="max-w-[640px] text-[14px] font-normal leading-6 text-ink/75">
             <p>
               A curated shop for Iconica Design Studio, organized around the pieces clients most often need: seating, tables, lighting, and storage with a refined residential point of view.
@@ -812,8 +886,7 @@ function ShopPage() {
         <div className="mx-auto max-w-[1480px]">
           <div className="mb-9 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-olive">FEATURED</p>
-              <h2 className="font-serif text-[17px] font-normal leading-[1.35]">Studio Picks</h2>
+              <p className="text-[11px] uppercase tracking-[0.24em] text-olive">FEATURED STUDIO PICKS</p>
             </div>
             <a href="#shop-catalog" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
               View Catalog
@@ -827,7 +900,7 @@ function ShopPage() {
                 </a>
                 <div className="border-x border-b border-ink/15 p-5">
                   <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{product.category}</p>
-                  <h3 className="mt-3 font-serif text-[17px] font-normal leading-[1.35]">{product.name}</h3>
+                  <h3 className="mt-3 font-serif text-[17px] font-normal uppercase leading-[1.35]">{product.name}</h3>
                   <p className="mt-3 text-[13px] leading-6 text-ink/70">{product.detail}</p>
                   <div className="mt-5 flex items-center justify-between gap-4">
                     <span className="text-[12px] tracking-[0.16em]">{product.price}</span>
@@ -844,11 +917,7 @@ function ShopPage() {
 
       <section id="shop-catalog" className="border-b border-ink bg-porcelain px-4 py-12 md:px-7 md:py-20">
         <div className="mx-auto max-w-[1480px]">
-          <div className="mb-8 flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
-            <div className="max-w-[560px]">
-              <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-olive">CATALOG</p>
-              <h2 className="font-serif text-[17px] font-normal leading-[1.35]">Browse By Category</h2>
-            </div>
+          <div className="mb-8 flex flex-col justify-end gap-5 lg:flex-row lg:items-end">
             <div className="grid w-full grid-cols-2 border border-ink/20 sm:flex sm:w-auto sm:flex-wrap">
               {shopCategories.map((category) => (
                 <button
@@ -872,7 +941,7 @@ function ShopPage() {
                 <div className="flex flex-col justify-between p-6">
                   <div>
                     <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{product.category}</p>
-                    <h3 className="mt-3 font-serif text-[17px] font-normal leading-[1.35]">{product.name}</h3>
+                    <h3 className="mt-3 font-serif text-[17px] font-normal uppercase leading-[1.35]">{product.name}</h3>
                     <p className="mt-4 text-[14px] leading-6 text-ink/75">{product.detail}</p>
                   </div>
                   <div className="mt-6 flex items-center justify-between gap-4 border-t border-ink/15 pt-4">
@@ -925,7 +994,7 @@ function ProductPage({ product }) {
               Back to Shop
             </a>
             <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">{product.category}</p>
-            <h1 className="font-serif text-[22px] font-normal leading-[1.25] md:text-[34px]">{product.name}</h1>
+            <h1 className="font-serif text-[22px] font-normal uppercase leading-[1.25] md:text-[34px]">{product.name}</h1>
             <p className="mt-5 text-[13px] uppercase tracking-[0.18em] text-ink/55">{product.price}</p>
             <p className="mt-7 text-[15px] font-normal leading-7 text-ink/75">{product.description}</p>
             <div className="mt-9 grid border border-ink/20 text-[13px] leading-6 sm:grid-cols-3">
@@ -973,7 +1042,7 @@ function ProductPage({ product }) {
                 </a>
                 <div className="pt-5">
                   <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{item.category}</p>
-                  <h3 className="mt-3 font-serif text-[17px] font-normal leading-[1.35]">{item.name}</h3>
+                  <h3 className="mt-3 font-serif text-[17px] font-normal uppercase leading-[1.35]">{item.name}</h3>
                   <p className="mt-3 text-[12px] tracking-[0.16em]">{item.price}</p>
                 </div>
               </article>
@@ -989,51 +1058,99 @@ function ProductPage({ product }) {
 
 const blogPosts = [
   {
-    slug: 'lorem-ipsum-one',
-    title: 'Lorem Ipsum Dolor Sit Amet',
-    category: 'Journal',
+    slug: 'introducing-the-latch-key',
+    title: 'Introducing The Latch Key: Forms That Hold Presence',
+    category: 'Objects',
     date: 'May 2026',
     author: 'Iconica Design Studio',
     readTime: '4 min read',
     excerpt:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Sed posuere consectetur est at lobortis.',
+      'A quiet study in sculptural objects, natural branches, and the kind of forms that bring structure and presence to a room.',
     image: img.storyOne,
     body: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.',
-      'Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo. Curabitur blandit tempus porttitor. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.',
-      'Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.',
+      'Objects are often the smallest pieces in a room, but they can hold the clearest point of view. Shape, patina, scale, and negative space all affect how a composition settles.',
+      'We look for pieces that feel grounded without feeling heavy: vessels with irregular surfaces, greenery with natural movement, and materials that contrast clean architecture.',
+      'The result is a room that feels collected over time, with enough restraint for the strongest pieces to breathe.',
     ],
   },
   {
-    slug: 'lorem-ipsum-two',
-    title: 'Consectetur Adipiscing Elit Tempor',
-    category: 'Process',
+    slug: 'vesta-ceramic-lamp',
+    title: 'The Vesta Ceramic Lamp - Lighting By Canoa Lab',
+    category: 'Lighting',
     date: 'April 2026',
     author: 'Iconica Design Studio',
     readTime: '5 min read',
     excerpt:
-      'Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo.',
+      'A behind-the-scenes look at sculptural ceramic lamps, soft illumination, and lighting choices that add warmth without visual noise.',
     image: img.storyTwo,
     body: [
-      'Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo. Sed posuere consectetur est at lobortis. Cum sociis natoque penatibus et magnis dis parturient montes.',
-      'Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.',
-      'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.',
+      'Lighting is one of the fastest ways to change the emotional temperature of a space. A ceramic base, a linen shade, and a low glow can make a room feel settled immediately.',
+      'We prefer lamps that act like quiet sculpture: useful, tactile, and strong enough to stand alone on a shelf, console, or bedside table.',
+      'When layered with architectural lighting, these smaller pieces soften the edges of a room and make the design feel more personal.',
     ],
   },
   {
-    slug: 'lorem-ipsum-three',
-    title: 'Vivamus Sagittis Lacus Vel Augue',
-    category: 'Materials',
+    slug: 'year-of-the-horse',
+    title: 'The Year Of The Horse',
+    category: 'Studio Notes',
     date: 'March 2026',
     author: 'Iconica Design Studio',
     readTime: '3 min read',
     excerpt:
-      'Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.',
+      'A sculptural arrangement celebrating movement, renewal, and natural elements woven into an interior gesture.',
     image: img.storyThree,
     body: [
-      'Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod.',
-      'Nulla vitae elit libero, a pharetra augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper.',
-      'Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.',
+      'Seasonal arrangements do not need to feel temporary or decorative. With the right materials, they can become part of the architecture of a room.',
+      'Branches, seed pods, vessels, and weathered surfaces create movement without relying on color alone. The effect is restrained, but still expressive.',
+      'These compositions are a reminder that interiors can hold ritual, memory, and a sense of time passing.',
+    ],
+  },
+  {
+    slug: 'material-notes-travertine',
+    title: 'Material Notes: Travertine, Grain, And Quiet Weight',
+    category: 'Materials',
+    date: 'February 2026',
+    author: 'Iconica Design Studio',
+    readTime: '4 min read',
+    excerpt:
+      'A look at stone, wood, and tonal restraint as tools for building rooms that feel calm, grounded, and lasting.',
+    image: img.canoa,
+    body: [
+      'Material selection begins with feeling. Before a finish is specified, we look at how it will hold light, age with use, and sit next to the other textures in the room.',
+      'Travertine, walnut, linen, plaster, and aged metal each carry a different kind of weight. The work is in balancing them so no single note overwhelms the room.',
+      'When the palette is restrained, proportion and surface become more important. Small decisions start to carry the design.',
+    ],
+  },
+  {
+    slug: 'how-we-layer-a-room',
+    title: 'How We Layer A Room Without Overworking It',
+    category: 'Process',
+    date: 'January 2026',
+    author: 'Iconica Design Studio',
+    readTime: '5 min read',
+    excerpt:
+      'Layering is less about adding more and more about choosing the right contrast between structure, softness, objects, and light.',
+    image: img.trade,
+    body: [
+      'A finished room should feel complete, but not crowded. We start with architectural clarity, then add softness, texture, art, lighting, and objects in measured passes.',
+      'Each layer has a role. Some pieces anchor the composition. Others soften it. The best rooms let both kinds of pieces work without competing.',
+      'Editing is as important as sourcing. Removing one object can make the strongest material or silhouette easier to see.',
+    ],
+  },
+  {
+    slug: 'console-styling-study',
+    title: 'A Quiet Guide To Console Styling',
+    category: 'Styling',
+    date: 'December 2025',
+    author: 'Iconica Design Studio',
+    readTime: '3 min read',
+    excerpt:
+      'Vessels, books, branches, and negative space can turn a simple console into a composed architectural moment.',
+    image: img.edit,
+    body: [
+      'Console styling works best when it responds to the wall, the floor, and the sightline around it. It is not a separate decorative exercise.',
+      'We like a mix of vertical movement, low grounded pieces, and a little empty space. That breathing room keeps the composition from feeling staged.',
+      'A single branch, a heavy vessel, or a stack of books can be enough when the scale is right.',
     ],
   },
 ]
@@ -1044,24 +1161,23 @@ function BlogSection() {
       <div className="mx-auto max-w-[1100px]">
         <div className="mb-9 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-olive">JOURNAL</p>
-            <h2 className="font-serif text-[20px] font-normal leading-[1.35]">From the Studio</h2>
+            <p className="text-[11px] uppercase tracking-[0.24em] text-olive">FROM THE STUDIO</p>
           </div>
-          <a href="/journal" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
-            Read the Journal
+          <a href="/blog" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
+            Read the Blog
           </a>
         </div>
         <div className="grid gap-8 md:grid-cols-3">
           {blogPosts.map((post) => (
             <article key={post.slug} className="group">
-              <a href={`/journal/${post.slug}`} className="block aspect-[4/3] overflow-hidden border border-ink/15 bg-bone">
+              <a href={`/blog/${post.slug}`} className="block aspect-[4/3] overflow-hidden border border-ink/15 bg-bone">
                 <img src={post.image} alt={post.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
               </a>
               <div className="pt-5">
                 <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{post.category} / {post.date}</p>
                 <h3 className="mt-3 font-serif text-[18px] font-normal leading-[1.35]">{post.title}</h3>
                 <p className="mt-3 text-[14px] font-normal leading-6 text-ink/70">{post.excerpt}</p>
-                <a href={`/journal/${post.slug}`} className="mt-4 inline-flex text-[10px] uppercase tracking-[0.18em] underline underline-offset-4">
+                <a href={`/blog/${post.slug}`} className="mt-4 inline-flex text-[10px] uppercase tracking-[0.18em] underline underline-offset-4">
                   Read More
                 </a>
               </div>
@@ -1073,40 +1189,37 @@ function BlogSection() {
   )
 }
 
-function JournalPage() {
+function BlogPage() {
   return (
     <>
-      <section className="grid border-b border-ink bg-porcelain md:grid-cols-[0.9fr_1.1fr]">
-        <div className="flex items-start px-6 py-8 md:border-r md:px-14 md:py-9">
-          <div className="max-w-[560px]">
-            <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">JOURNAL</p>
-            <h1 className="font-serif text-[17px] font-normal leading-[1.45]">
-              Notes from the studio on process, materials, and projects.
-            </h1>
-          </div>
-        </div>
-        <div className="flex items-start px-6 py-8 md:px-14 md:py-9">
-          <div className="max-w-[640px] text-[14px] font-normal leading-6 text-ink/75">
+      <section className="blog-page bg-[#fbfaf7] px-6 py-14 sm:px-10 md:px-14 md:py-20">
+        <div className="mx-auto max-w-[980px] text-center">
+          <p className="mb-3 text-[11px] font-normal uppercase tracking-[0.22em] text-ink/55">BLOG</p>
+          <h1 className="font-serif text-[16px] font-normal leading-[1.45] tracking-[0.04em] text-ink">STORIES</h1>
+          <div className="blog-intro mx-auto mt-6 max-w-[640px] space-y-4 text-[14px] font-normal leading-6 text-ink/70">
             <p>
-              A growing record of ideas, references, and details that shape the way Iconica Design Studio works.
+              ICONICA DESIGN STUDIO collects notes on interiors, objects, materiality, and the quiet details that shape how a room feels. These stories trace the studio's approach to balance, contrast, atmosphere, and enduring design.
+            </p>
+            <p>
+              Browse our <a href="/shop" className="underline underline-offset-4">shop collection</a> and <a href="/portfolio" className="underline underline-offset-4">selected project work</a>.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="border-b border-ink bg-[#fbfaf7] px-4 py-12 md:px-7 md:py-16">
-        <div className="mx-auto max-w-[1100px]">
-          <div className="grid gap-10 md:grid-cols-3">
+      <section className="blog-page bg-[#fbfaf7] px-6 pb-16 sm:px-12 md:px-20 md:pb-24 lg:px-32">
+        <div className="mx-auto max-w-[860px]">
+          <div className="grid gap-x-6 gap-y-12 md:grid-cols-3">
             {blogPosts.map((post) => (
               <article key={post.slug} className="group">
-                <a href={`/journal/${post.slug}`} className="block aspect-[4/3] overflow-hidden border border-ink/15 bg-bone">
+                <a href={`/blog/${post.slug}`} className="block aspect-[1.04] overflow-hidden bg-bone">
                   <img src={post.image} alt={post.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
                 </a>
                 <div className="pt-5">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{post.category} / {post.date}</p>
-                  <h2 className="mt-3 font-serif text-[18px] font-normal leading-[1.35]">{post.title}</h2>
+                  <p className="text-[11px] uppercase tracking-[0.22em] text-olive">{post.category} / {post.date}</p>
+                  <h2 className="mt-3 font-serif text-[16px] font-normal leading-[1.4] tracking-[0.02em] text-ink">{post.title}</h2>
                   <p className="mt-3 text-[14px] font-normal leading-6 text-ink/70">{post.excerpt}</p>
-                  <a href={`/journal/${post.slug}`} className="mt-4 inline-flex text-[10px] uppercase tracking-[0.18em] underline underline-offset-4">
+                  <a href={`/blog/${post.slug}`} className="mt-4 inline-flex text-[11px] uppercase tracking-[0.2em] text-ink underline underline-offset-4">
                     Read More
                   </a>
                 </div>
@@ -1122,12 +1235,12 @@ function JournalPage() {
 function BlogPostPage({ post }) {
   if (!post) {
     return (
-      <section className="border-b border-ink bg-porcelain px-5 py-20 md:px-7">
+      <section className="bg-[#fbfaf7] px-5 py-20 md:px-7">
         <div className="mx-auto max-w-[900px]">
-          <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">JOURNAL</p>
-          <h1 className="font-serif text-[17px] font-normal leading-[1.45]">Article not found.</h1>
-          <a href="/journal" className="mt-7 inline-flex text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
-            Back to Journal
+          <p className="mb-5 text-[11px] uppercase tracking-[0.22em] text-olive">BLOG</p>
+          <h1 className="font-serif text-[16px] font-normal leading-[1.45] text-ink">Article not found.</h1>
+          <a href="/blog" className="mt-7 inline-flex text-[11px] uppercase tracking-[0.2em] text-ink underline underline-offset-4">
+            Back to Blog
           </a>
         </div>
       </section>
@@ -1138,27 +1251,27 @@ function BlogPostPage({ post }) {
 
   return (
     <>
-      <section className="relative min-h-[360px] border-b border-ink md:min-h-[520px]">
+      <section className="relative min-h-[320px] bg-bone md:min-h-[440px]">
         <img src={post.image} alt={post.title} decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-black/20" />
-        <div className="relative mx-auto flex min-h-[360px] max-w-[1480px] items-center justify-center px-5 py-10 text-center text-white sm:px-6 md:min-h-[520px] md:px-14 md:py-14">
-          <div className="image-copy max-w-[720px]">
-            <p className="mb-4 text-[11px] uppercase tracking-[0.24em]">{post.category} / {post.date}</p>
-            <h1 className="font-serif text-[22px] font-normal leading-[1.25] md:text-[34px]">{post.title}</h1>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/45 to-black/20" />
+        <div className="relative mx-auto flex min-h-[320px] max-w-[1100px] items-center justify-center px-5 py-10 text-center text-white sm:px-6 md:min-h-[440px] md:px-14 md:py-14">
+          <div className="image-copy max-w-[640px]">
+            <p className="mb-3 text-[11px] uppercase tracking-[0.22em] text-white/85">{post.category} / {post.date}</p>
+            <h1 className="font-serif text-[16px] font-normal leading-[1.45] tracking-[0.04em]">{post.title}</h1>
           </div>
         </div>
       </section>
 
-      <section className="border-b border-ink bg-[#fbfaf7] px-6 py-12 md:px-14 md:py-20">
+      <section className="bg-[#fbfaf7] px-6 py-12 md:px-14 md:py-16">
         <div className="mx-auto grid max-w-[1100px] gap-10 md:grid-cols-[0.32fr_0.68fr]">
-          <aside className="text-[11px] uppercase tracking-[0.2em] text-ink/60">
+          <aside className="text-[11px] uppercase tracking-[0.22em] text-ink/55">
             <p>{post.author}</p>
             <p className="mt-3">{post.readTime}</p>
-            <a href="/journal" className="mt-8 inline-flex text-[10px] tracking-[0.2em] underline underline-offset-4">
-              Back to Journal
+            <a href="/blog" className="mt-8 inline-flex text-[11px] tracking-[0.2em] text-ink underline underline-offset-4">
+              Back to Blog
             </a>
           </aside>
-          <div className="max-w-[640px] space-y-6 text-[15px] font-normal leading-7 text-ink/80">
+          <div className="max-w-[640px] space-y-5 text-[14px] font-normal leading-6 text-ink/70">
             {post.body.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
@@ -1167,23 +1280,23 @@ function BlogPostPage({ post }) {
       </section>
 
       {relatedPosts.length > 0 && (
-        <section className="border-b border-ink bg-bone px-4 py-12 md:px-7 md:py-16">
-          <div className="mx-auto max-w-[1480px]">
+        <section className="bg-[#fbfaf7] px-4 py-12 md:px-7 md:py-16">
+          <div className="mx-auto max-w-[1100px]">
             <div className="mb-9 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-              <h2 className="font-serif text-[17px] font-normal leading-[1.35]">CONTINUE READING</h2>
-              <a href="/journal" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
+              <h2 className="font-serif text-[16px] font-normal leading-[1.45] tracking-[0.04em] text-ink">CONTINUE READING</h2>
+              <a href="/blog" className="text-[11px] uppercase tracking-[0.2em] text-ink underline underline-offset-4">
                 View All Posts
               </a>
             </div>
             <div className="grid gap-8 md:grid-cols-2">
               {relatedPosts.map((item) => (
                 <article key={item.slug} className="group">
-                  <a href={`/journal/${item.slug}`} className="block aspect-[16/10] overflow-hidden border border-ink/15 bg-porcelain">
+                  <a href={`/blog/${item.slug}`} className="block aspect-[16/10] overflow-hidden bg-bone">
                     <img src={item.image} alt={item.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
                   </a>
                   <div className="pt-5">
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-olive">{item.category} / {item.date}</p>
-                    <h3 className="mt-3 font-serif text-[18px] font-normal leading-[1.35]">{item.title}</h3>
+                    <p className="text-[11px] uppercase tracking-[0.22em] text-olive">{item.category} / {item.date}</p>
+                    <h3 className="mt-3 font-serif text-[16px] font-normal leading-[1.4] tracking-[0.02em] text-ink">{item.title}</h3>
                   </div>
                 </article>
               ))}
@@ -1211,7 +1324,7 @@ function InstagramGridSection() {
         <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-olive">INSTAGRAM</p>
-            <h2 className="font-serif text-[17px] font-normal leading-[1.35]">@iconicadesignstudio</h2>
+            <h2 className="font-serif text-[16px] font-normal uppercase tracking-[0.04em] leading-[1.35]">@ICONICADESIGNSTUDIO</h2>
           </div>
           <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
             Follow on Instagram
@@ -1232,12 +1345,12 @@ function InstagramGridSection() {
 function PortfolioPage() {
   return (
     <>
-      <section className="bg-porcelain px-5 py-10 md:px-7 md:py-12">
-        <div className="mx-auto max-w-[1480px]">
-          <p className="mb-4 text-[11px] uppercase tracking-[0.24em] text-olive">PORTFOLIO</p>
-          <h1 className="max-w-[720px] font-serif text-[20px] font-normal leading-[1.4] md:text-[24px]">
+      <section className="bg-porcelain px-5 py-8 md:px-7 md:py-10">
+        <div className="mx-auto grid max-w-[1480px] items-start gap-4 md:grid-cols-[0.4fr_1fr]">
+          <p className="text-[11px] uppercase tracking-[0.24em] text-olive">PORTFOLIO</p>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-olive">
             Selected residential and commercial projects.
-          </h1>
+          </p>
         </div>
       </section>
 
@@ -1258,14 +1371,14 @@ function PortfolioPage() {
         </div>
       </section>
 
-      <section className="relative min-h-[240px] border-b border-ink md:min-h-[340px]">
+      <section className="relative min-h-[200px] border-b border-ink md:min-h-[260px]">
         <img src={portfolioProjects[2].images[0]} alt="Portfolio closing project" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/55 to-black/30" />
-        <div className="relative mx-auto flex min-h-[240px] max-w-[1480px] items-center justify-center px-5 py-7 text-center text-white sm:px-6 md:min-h-[340px] md:px-7 md:py-9">
-          <div className="image-copy max-w-[520px]">
-            <p className="mb-3 text-[11px] uppercase tracking-[0.24em]">START A PROJECT</p>
-            <h2 className="font-serif text-[17px] font-normal leading-[1.45]">Tell us about your project and we'll be in touch within 24 hours to arrange a call.</h2>
-            <ScheduleButton className="mt-6 text-white hover:text-white/75" />
+        <div className="relative mx-auto flex min-h-[200px] max-w-[1480px] items-center justify-center px-5 py-6 text-center text-white sm:px-6 md:min-h-[260px] md:px-7 md:py-8">
+          <div className="image-copy max-w-[420px]">
+            <p className="mb-2 text-[11px] uppercase tracking-[0.24em]">START A PROJECT</p>
+            <h2 className="font-serif text-[14px] font-normal leading-6">Tell us about your project and we'll be in touch within 24 hours to arrange a call.</h2>
+            <ScheduleButton className="mt-4 text-white hover:text-white/75" />
           </div>
         </div>
       </section>
@@ -1344,19 +1457,13 @@ const studioTeam = [
     name: 'Jogie',
     role: 'Executive Assistant to Judi Teran',
     image: img.jogie,
-    text: "Jogie operates as a strategic partner to Judi Teran, driving alignment across the studio's priorities, operations, and client engagements. He oversees high-level coordination of schedules, communications, and project workflows, ensuring seamless execution and continuity across all touchpoints.",
+    text: '',
   },
   {
     name: 'Nazia',
     role: 'Junior Designer + Architectural Drafter',
     image: img.teamOne,
     text: "Nazia brings technical expertise and creative support to the design team. She prepares detailed drawings, elevations, and permit-ready documents, while assisting in space planning, material boards, and design development.",
-  },
-  {
-    name: 'Maja',
-    role: 'Director of Finance & Business Operations',
-    image: img.teamTwo,
-    text: "Maja oversees the financial backbone of Iconica, managing bookkeeping, invoicing, procurement accounting, reconciliations, and internal systems. She ensures the business runs with clarity, accuracy, and efficiency.",
   },
 ]
 
@@ -1381,19 +1488,14 @@ const studioProcess = [
 function StudioPage() {
   return (
     <>
-      <section className="grid border-b border-ink bg-porcelain md:grid-cols-[0.9fr_1.1fr]">
-        <div className="flex items-start px-6 py-8 md:border-r md:px-14 md:py-9">
+      <section className="border-b border-ink bg-porcelain px-6 py-8 md:px-14 md:py-9">
+        <div className="mx-auto grid max-w-[1480px] gap-8 md:grid-cols-[0.9fr_1.1fr]">
           <div className="max-w-[560px]">
-            <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">THE STUDIO</p>
-            <h1 className="font-serif text-[17px] font-normal leading-[1.45]">
-              Our work is rooted in craftsmanship, balance, and narrative.
-            </h1>
+            <p className="text-[11px] uppercase tracking-[0.24em] text-olive">THE STUDIO</p>
           </div>
-        </div>
-        <div className="flex items-start px-6 py-8 md:px-14 md:py-9">
           <div className="max-w-[640px] space-y-5 text-[14px] font-normal leading-6 text-ink/75">
             <p>
-              Every environment is composed with warmth and contrasting natural texture against architectural clarity, restraint paired with expression. We collaborate with a trusted network of artisans, builders, and makers who share our dedication to excellence and authenticity.
+              Our work is rooted in craftsmanship, balance, and narrative. Every environment is composed with warmth and contrasting natural texture against architectural clarity, restraint paired with expression. We collaborate with a trusted network of artisans, builders, and makers who share our dedication to excellence and authenticity.
             </p>
             <p>Each space tells a story of material honesty, considered detail, and enduring design.</p>
           </div>
@@ -1423,13 +1525,10 @@ function StudioPage() {
 
       <section className="border-b border-ink bg-porcelain px-4 py-12 md:px-7 md:py-20">
         <div className="mx-auto max-w-[1480px]">
-          <div className="mb-10 flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
-            <h2 className="font-serif text-[17px] font-normal leading-[1.35]">THE TEAM</h2>
-            <p className="max-w-[520px] text-[14px] font-normal leading-6 text-ink/65">
-              A focused studio team supporting the creative, technical, and operational sides of each project.
-            </p>
+          <div className="mb-10">
+            <h2 className="font-serif text-[16px] font-normal leading-[1.35]">THE TEAM</h2>
           </div>
-          <div className="grid gap-10 md:grid-cols-3">
+          <div className="grid gap-10 md:grid-cols-2 md:gap-16 md:justify-items-center">
             {studioTeam.map((member) => (
               <article key={member.name} className="group text-center transition duration-300">
                 <div className="mx-auto aspect-square w-[min(240px,70vw)] overflow-hidden rounded-full border border-ink/20 bg-bone shadow-sm md:w-[260px]">
@@ -1437,8 +1536,10 @@ function StudioPage() {
                 </div>
                 <div className="mx-auto max-w-[380px] pt-6">
                   <p className="text-[11px] uppercase leading-5 tracking-[0.2em] text-olive">{member.role}</p>
-                  <h3 className="mt-2 font-serif text-[17px] font-normal leading-[1.35]">{member.name}</h3>
-                  <p className="mt-4 text-[14px] font-normal leading-6 text-ink/75">{member.text}</p>
+                  <h3 className="mt-2 font-serif text-[16px] font-normal leading-[1.35]">{member.name}</h3>
+                  {member.text && (
+                    <p className="mt-4 text-[14px] font-normal leading-6 text-ink/75">{member.text}</p>
+                  )}
                 </div>
               </article>
             ))}
@@ -1481,21 +1582,12 @@ function ContactPage() {
 
   return (
     <>
-      <section className="grid border-b border-ink bg-porcelain md:grid-cols-[0.82fr_1.18fr]">
-        <div className="flex items-start px-6 py-8 md:border-r md:px-14 md:py-9">
-          <div className="max-w-[560px]">
-            <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">CONTACT</p>
-            <h1 className="font-serif text-[17px] font-normal leading-[1.45]">
-              Tell us about the space you want to create.
-            </h1>
-          </div>
-        </div>
-        <div className="flex items-start px-6 py-8 md:px-14 md:py-9">
-          <div className="max-w-[640px] text-[14px] font-normal leading-6 text-ink/75">
-            <p>
-              Share a few project details and the studio will follow up with availability, next steps, and scheduling options.
-            </p>
-          </div>
+      <section className="border-b border-ink bg-porcelain px-6 py-8 md:px-14 md:py-9">
+        <div className="mx-auto max-w-[1480px]">
+          <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-olive">CONTACT</p>
+          <h1 className="font-serif text-[16px] font-normal leading-[1.45]">
+            Tell us about the space you want to create.
+          </h1>
         </div>
       </section>
 
@@ -1504,14 +1596,14 @@ function ContactPage() {
           <img src={img.hero} alt="Iconica Design Studio contact interior" decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/55 to-black/30" />
           <div className="image-copy relative flex min-h-[360px] items-center justify-center px-6 py-10 text-center text-white md:px-14 lg:min-h-[760px]">
-            <div className="max-w-[520px]">
-              <p className="mb-4 text-[11px] uppercase tracking-[0.24em]">ICONICA DESIGN STUDIO</p>
-              <p className="font-serif text-[17px] font-normal leading-[1.45] md:text-[25px]">
+            <div className="max-w-[380px]">
+              <p className="mb-3 text-[11px] uppercase tracking-[0.24em]">ICONICA DESIGN STUDIO</p>
+              <p className="font-serif text-[16px] font-normal leading-[1.45]">
                 Interior design, renovation planning, and design-build support.
               </p>
-              <div className="mt-8 grid gap-3 text-[12px] uppercase tracking-[0.16em] text-white/85">
-                <a href="mailto:info@iconicainteriordesign.com" className="hover:underline">info@iconicainteriordesign.com</a>
-                <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="hover:underline">@iconicadesignstudio</a>
+              <div className="mt-6 grid gap-3 text-[12px] uppercase tracking-[0.16em] text-white/85">
+                <a href="mailto:hello@iconicadesignstudio.com" className="hover:underline">hello@iconicadesignstudio.com</a>
+                <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="hover:underline">@ICONICADESIGNSTUDIO</a>
               </div>
             </div>
           </div>
@@ -1519,7 +1611,7 @@ function ContactPage() {
 
         <div className="flex items-center px-6 py-12 md:px-14 md:py-16">
           <div className="w-full max-w-[720px]">
-            <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">PROJECT INQUIRY</p>
+            <p className="mb-5 text-[11px] uppercase leading-5 tracking-[0.22em] text-olive">Let's connect to my calendar so that people can schedule a time for a call</p>
             {submitted ? (
               <div className="border border-ink bg-bone p-7">
                 <p className="text-[11px] uppercase tracking-[0.22em]">REQUEST RECEIVED</p>
@@ -1591,10 +1683,145 @@ function ContactPage() {
   )
 }
 
+function ServicesPage() {
+  return (
+    <>
+      <section className="border-b border-ink bg-porcelain px-6 py-8 sm:px-12 md:px-20 md:py-9 lg:px-32">
+        <div className="mx-auto grid max-w-[1100px] items-start gap-4 md:grid-cols-[0.4fr_1fr]">
+          <p className="text-[11px] uppercase tracking-[0.24em] text-olive">SERVICES</p>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-olive">
+            Residential and commercial design, sourcing, and project delivery from a single studio.
+          </p>
+        </div>
+      </section>
+
+      <section className="grid border-b border-ink bg-porcelain lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="relative min-h-[320px] border-b border-ink lg:min-h-[560px] lg:border-b-0 lg:border-r">
+          <img src={img.hero} alt="Iconica Design Studio services" decoding="async" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-black/35" />
+        </div>
+        <div className="flex items-center px-6 py-12 md:px-14 md:py-16">
+          <div className="max-w-[520px]">
+            <p className="mb-5 text-[11px] uppercase tracking-[0.24em] text-olive">HOW WE WORK</p>
+            <h2 className="font-serif text-[16px] font-normal leading-[1.5] text-ink">
+              Each engagement is scoped to the project, not the studio's template. We pair the right level of involvement with what the space, the timeline, and the team actually require.
+            </h2>
+            <p className="mt-5 text-[14px] font-normal leading-6 text-ink/70">
+              Below is a working overview of the services we offer most often. Most clients combine more than one. Tell us about the project and we'll suggest the right pairing.
+            </p>
+            <ScheduleButton className="mt-7" />
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-ink bg-porcelain px-6 py-12 sm:px-12 md:px-20 md:py-16 lg:px-32">
+        <div className="mx-auto max-w-[1100px]">
+          <div className="mb-10">
+            <h2 className="font-serif text-[16px] font-normal leading-[1.35] text-ink">WHAT WE OFFER</h2>
+          </div>
+          <div className="grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+            {studioServices.map((service) => (
+              <article key={service.slug} className="group">
+                <a href="/contact" className="block aspect-[4/5] overflow-hidden bg-bone">
+                  <img src={service.image} alt={service.name} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+                </a>
+                <div className="pt-5">
+                  <p className="text-[11px] uppercase tracking-[0.22em] text-olive">{service.category}</p>
+                  <h3 className="mt-3 font-serif text-[16px] font-normal leading-[1.4] tracking-[0.02em] text-ink">{service.name}</h3>
+                  <p className="mt-3 text-[14px] font-normal leading-6 text-ink/70">{service.summary}</p>
+                  <ul className="mt-4 space-y-1 text-[12px] uppercase tracking-[0.14em] text-ink/55">
+                    {service.deliverables.map((item) => (
+                      <li key={item} className="border-b border-ink/10 pb-1 last:border-b-0">{item}</li>
+                    ))}
+                  </ul>
+                  <a href="/contact" className="mt-5 inline-flex text-[11px] uppercase tracking-[0.2em] text-ink underline underline-offset-4">
+                    Inquire
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ImageCallout
+        image={img.trade}
+        title="ENGAGEMENT MODELS"
+        text="Full-service, hourly consulting, and per-room scopes — chosen to match the project."
+        align="right"
+        height="short"
+        href="/contact"
+        cta="DISCUSS YOUR PROJECT"
+      />
+
+      <section className="border-b border-ink bg-bone px-6 py-12 sm:px-12 md:px-20 md:py-16 lg:px-32">
+        <div className="mx-auto max-w-[1100px]">
+          <div className="mb-10">
+            <h2 className="font-serif text-[16px] font-normal leading-[1.35] text-ink">PROCESS</h2>
+          </div>
+          <div className="grid gap-0 border border-ink/20 md:grid-cols-4">
+            {serviceProcess.map((item) => (
+              <article key={item.step} className="border-b border-ink/20 bg-porcelain p-6 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0">
+                <p className="text-[11px] uppercase tracking-[0.24em] text-olive">{item.step}</p>
+                <h3 className="mt-4 font-serif text-[16px] font-normal leading-[1.35] text-ink">{item.title}</h3>
+                <p className="mt-3 text-[14px] font-normal leading-6 text-ink/70">{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-ink bg-porcelain px-6 py-12 sm:px-12 md:px-20 md:py-16 lg:px-32">
+        <div className="mx-auto grid max-w-[1100px] gap-10 md:grid-cols-[0.4fr_1fr] md:items-start">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.24em] text-olive">QUESTIONS</p>
+          </div>
+          <div className="divide-y divide-ink/15 border-y border-ink/15">
+            {[
+              {
+                q: 'Do you take on out-of-state projects?',
+                a: 'Yes. Selected residential and commercial work across the Bay Area, Los Angeles, New York, and a small number of project-fit destinations.',
+              },
+              {
+                q: 'Can you work with our existing architect or contractor?',
+                a: 'Often, yes. We can plug into an existing team or assemble one from our trusted network, depending on where the project is.',
+              },
+              {
+                q: 'Is there a minimum project size?',
+                a: 'Full-service residential typically starts at a single primary room or full home. Per-room, hourly, and sourcing engagements have lower entry points.',
+              },
+              {
+                q: 'How do fees work?',
+                a: 'Most engagements are a fixed design fee plus procurement, with construction administration billed hourly. Detailed in the written proposal before any work begins.',
+              },
+            ].map((item) => (
+              <div key={item.q} className="py-5">
+                <p className="font-serif text-[14px] font-normal leading-[1.45] tracking-[0.02em] text-ink">{item.q}</p>
+                <p className="mt-2 text-[14px] font-normal leading-6 text-ink/70">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ImageCallout
+        image={img.edit}
+        title="START A PROJECT"
+        text="Tell us about your space and we'll respond within 24 hours with next steps."
+        align="left"
+        height="short"
+        href="/contact"
+        cta="CONTACT THE STUDIO"
+      />
+    </>
+  )
+}
+
 function Footer() {
   const links = [
     { label: 'Portfolio', href: '/portfolio' },
     { label: 'Shop', href: '/shop' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Studio', href: '/studio' },
     { label: 'Press', href: '/press' },
     { label: 'Contact', href: '/contact' },
@@ -1604,15 +1831,15 @@ function Footer() {
     <footer className="bg-[#f1eee5] text-ink/75">
       <div className="mx-auto grid max-w-[1480px] gap-10 px-6 py-10 sm:px-10 md:grid-cols-3 md:gap-12 md:px-14 md:py-12">
         <div className="max-w-[320px]">
-          <a href="/" className="font-serif text-[20px] font-normal lowercase leading-none tracking-[0.08em] text-ink">
-            iconica
+          <a href="/" className="font-serif text-[17px] font-normal uppercase leading-none tracking-[0.1em] text-ink">
+            ICONICA DESIGN STUDIO
           </a>
           <p className="mt-3 text-[13px] leading-6">
             Commercial & residential interior design studio crafting refined, enduring spaces.
           </p>
           <div className="mt-4 flex flex-col gap-1 text-[12px] uppercase tracking-[0.14em]">
-            <a href="mailto:info@iconicainteriordesign.com" className="hover:text-ink">info@iconicainteriordesign.com</a>
-            <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="hover:text-ink">@iconicadesignstudio</a>
+            <a href="mailto:hello@iconicadesignstudio.com" className="hover:text-ink">hello@iconicadesignstudio.com</a>
+            <a href="https://www.instagram.com/iconicadesignstudio/" target="_blank" rel="noreferrer" className="hover:text-ink">@ICONICADESIGNSTUDIO</a>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-y-2 text-[13px] font-normal uppercase leading-6 tracking-[0.06em] md:max-w-[280px]">
@@ -1637,7 +1864,7 @@ function Footer() {
       </div>
       <div className="border-t border-ink/10 px-6 py-4 sm:px-10 md:px-14">
         <div className="mx-auto flex max-w-[1480px] flex-col gap-2 text-[12px] uppercase tracking-[0.1em] text-ink/65 sm:flex-row sm:items-center sm:justify-between">
-          <span>(C) 2026 Iconica Design Studio</span>
+          <span>(C) 2021 Iconica Design Studio</span>
           <span>All Rights Reserved</span>
         </div>
       </div>
@@ -1705,13 +1932,14 @@ function App() {
   const isPressPage = path.replace(/\/$/, '') === '/press'
   const isShopPage = path.replace(/\/$/, '') === '/shop'
   const isContactPage = path.replace(/\/$/, '') === '/contact'
-  const isJournalPage = path.replace(/\/$/, '') === '/journal'
+  const isServicesPage = path.replace(/\/$/, '') === '/services'
+  const isBlogPage = ['/blog', '/journal'].includes(path.replace(/\/$/, ''))
   const projectSlug = path.match(/^\/portfolio\/([^/]+)\/?$/)?.[1]
   const productSlug = path.match(/^\/shop\/([^/]+)\/?$/)?.[1]
-  const journalSlug = path.match(/^\/journal\/([^/]+)\/?$/)?.[1]
+  const blogSlug = path.match(/^\/(?:blog|journal)\/([^/]+)\/?$/)?.[1]
   const activeProject = portfolioProjects.find((project) => project.slug === projectSlug)
   const activeProduct = shopProducts.find((product) => product.slug === productSlug)
-  const activeBlogPost = blogPosts.find((post) => post.slug === journalSlug)
+  const activeBlogPost = blogPosts.find((post) => post.slug === blogSlug)
 
   return (
     <>
@@ -1724,10 +1952,10 @@ function App() {
             <ProjectPage project={activeProject} />
           ) : productSlug ? (
             <ProductPage product={activeProduct} />
-          ) : journalSlug ? (
+          ) : blogSlug ? (
             <BlogPostPage post={activeBlogPost} />
-          ) : isJournalPage ? (
-            <JournalPage />
+          ) : isBlogPage ? (
+            <BlogPage />
           ) : isPortfolioPage ? (
             <PortfolioPage />
           ) : isPressPage ? (
@@ -1736,6 +1964,8 @@ function App() {
             <ShopPage />
           ) : isContactPage ? (
             <ContactPage />
+          ) : isServicesPage ? (
+            <ServicesPage />
           ) : isStudioPage ? (
             <StudioPage />
           ) : (
@@ -1752,7 +1982,7 @@ function App() {
                 align="right"
               />
               <FeaturedProducts />
-              <ImageCallout image={img.trade} title="READY TO START YOUR PROJECT?" text="Let's talk about what you have in mind." align="left" height="short" />
+              <ImageCallout image={img.trade} title="READY TO START YOUR PROJECT?" text="Let's talk about what you have in mind." align="left" height="short" href="/contact" cta="CONTACT" />
               <BlogSection />
               <HomeEditSection />
               <InstagramSection />
