@@ -1875,7 +1875,25 @@ function App() {
                 height="medium"
                 align="right"
               />
-              <ImageCallout image={img.trade} title="READY TO START YOUR PROJECT?" text="Let's talk about what you have in mind." align="left" height="short" href="/contact" cta="CONTACT" />
+              <section className="grid border-b border-t border-ink/10 bg-porcelain md:grid-cols-[1fr_1fr]">
+                <div className="order-2 flex items-center justify-center px-6 py-10 sm:px-10 sm:py-14 md:order-1 md:px-14 md:py-16">
+                  <div className="max-w-[420px] text-left">
+                    <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-olive">START A PROJECT</p>
+                    <h2 className="font-serif text-[18px] font-normal leading-[1.35] tracking-[0.02em] text-ink sm:text-[20px] md:text-[22px]">
+                      Ready to start your project?
+                    </h2>
+                    <p className="mt-4 text-[13px] font-normal leading-[1.6] text-ink/70 sm:text-[14px]">
+                      Let's talk about what you have in mind. We'll respond within 48 hours to arrange a call.
+                    </p>
+                    <a href="/contact" className="mt-6 inline-flex text-[11px] uppercase tracking-[0.2em] text-ink underline underline-offset-4">
+                      Contact the Studio
+                    </a>
+                  </div>
+                </div>
+                <div className="order-1 aspect-[4/3] overflow-hidden bg-bone md:order-2 md:aspect-auto md:min-h-[420px]">
+                  <img src={img.trade} alt="Iconica Design interior" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                </div>
+              </section>
               <BlogSection />
               <HomeEditSection />
               <InstagramSection />
