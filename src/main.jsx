@@ -1451,17 +1451,16 @@ function StudioPage() {
           <div className="mb-6 md:mb-8">
             <p className="text-[11px] uppercase tracking-[0.24em] text-olive">THE TEAM</p>
           </div>
-          <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6 md:gap-10">
             {studioTeam.map((member) => (
               <article key={member.name} className="group text-center transition duration-300">
-                <div className="mx-auto aspect-square w-[min(80px,22vw)] overflow-hidden rounded-full border border-ink/20 bg-bone shadow-sm sm:w-[110px] md:w-[140px]">
+                <div className="mx-auto aspect-square w-[120px] overflow-hidden rounded-full border border-ink/20 bg-bone shadow-sm sm:w-[110px] md:w-[150px]">
                   <img src={member.image} alt={member.name} loading="lazy" decoding="async" className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.03]" />
                 </div>
-                <div className="pt-3 sm:pt-4">
-                  <h3 className="whitespace-nowrap font-serif text-[11px] font-normal leading-[1.35] text-ink sm:text-[12px] md:text-[13px]">
-                    {member.name} <span className="text-ink/65">| {member.role}</span>
-                  </h3>
-                  <p className="mx-auto mt-2 max-w-[280px] text-[11px] font-normal leading-[1.55] text-ink/75 sm:mt-3 sm:text-[12px] sm:leading-[1.55]">{member.text}</p>
+                <div className="mx-auto max-w-[300px] pt-4 sm:pt-5">
+                  <h3 className="font-serif text-[14px] font-normal leading-[1.35] text-ink">{member.name}</h3>
+                  <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-olive sm:text-[11px]">{member.role}</p>
+                  <p className="mt-3 text-[12px] font-normal leading-[1.55] text-ink/70 sm:text-[12.5px]">{member.text}</p>
                 </div>
               </article>
             ))}
