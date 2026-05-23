@@ -1875,7 +1875,6 @@ function App() {
                 height="medium"
                 align="right"
               />
-              <FeaturedProducts />
               <ImageCallout image={img.trade} title="READY TO START YOUR PROJECT?" text="Let's talk about what you have in mind." align="left" height="short" href="/contact" cta="CONTACT" />
               <BlogSection />
               <HomeEditSection />
