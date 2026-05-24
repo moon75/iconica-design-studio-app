@@ -269,18 +269,6 @@ const portfolioProjects = [
       imagePath('IMG_8124.JPG'),
       imagePath('IMG_8125.JPG'),
       imagePath('IMG_8105.JPG'),
-      imagePath('IMG_0145.JPG'),
-      imagePath('IMG_0142.JPG'),
-      imagePath('IMG_0141.JPG'),
-      imagePath('20.03.26 - 73_Irving - Test1 - OutsourcePlan UK.JPG'),
-      imagePath('3d572356-a7d6-469c-8142-0c1ce368073a.JPG'),
-      imagePath('IMG_0640.JPG'),
-      imagePath('IMG_9904.JPG'),
-      imagePath('IMG_9907.JPG'),
-      imagePath('IMG_9908.JPG'),
-      imagePath('IMG_9909.JPG'),
-      imagePath('IMG_5841.JPG'),
-      imagePath('IMG_5843.JPG'),
     ],
   },
 ]
@@ -1268,7 +1256,7 @@ function PortfolioPage() {
         <div className="mx-auto flex max-w-[1480px] flex-col items-baseline gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
           <p className="text-[11px] uppercase tracking-[0.24em] text-olive">PORTFOLIO</p>
           <p className="text-[11px] uppercase tracking-[0.24em] text-olive sm:text-right">
-            Selected residential and commercial projects.
+            Selected Commercial + Residential Projects.
           </p>
         </div>
       </section>
@@ -1357,9 +1345,9 @@ function ProjectPage({ project }) {
             </a>
           </div>
           <div className="grid gap-2 md:grid-cols-2 md:gap-3">
-            {project.images.map((image, index) => (
-              <a key={image} href={image} target="_blank" rel="noreferrer" className={`group block overflow-hidden bg-bone ${index === 0 ? 'md:col-span-2' : ''}`}>
-                <img src={image} alt={`${project.title} gallery ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" className={`${index === 0 ? 'aspect-[16/9]' : 'aspect-[4/3]'} h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]`} />
+            {project.images.slice(1).map((image, index) => (
+              <a key={image} href={image} target="_blank" rel="noreferrer" className="group block overflow-hidden bg-bone">
+                <img src={image} alt={`${project.title} gallery ${index + 1}`} loading="lazy" decoding="async" className="aspect-[4/3] h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]" />
               </a>
             ))}
           </div>
@@ -1874,27 +1862,7 @@ function App() {
                 height="medium"
                 align="right"
               />
-              <section className="grid border-b border-t border-ink/10 bg-porcelain md:grid-cols-[1fr_1fr]">
-                <div className="order-2 flex items-center justify-center px-6 py-10 sm:px-10 sm:py-14 md:order-1 md:px-14 md:py-16">
-                  <div className="max-w-[420px] text-left">
-                    <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-olive">START A PROJECT</p>
-                    <h2 className="font-serif text-[18px] font-normal leading-[1.35] tracking-[0.02em] text-ink sm:text-[20px] md:text-[22px]">
-                      Ready to start your project?
-                    </h2>
-                    <p className="mt-4 text-[13px] font-normal leading-[1.6] text-ink/70 sm:text-[14px]">
-                      Let's talk about what you have in mind. We'll respond within 48 hours to arrange a call.
-                    </p>
-                    <a href="/contact" className="mt-6 inline-flex text-[11px] uppercase tracking-[0.2em] text-ink underline underline-offset-4">
-                      Contact the Studio
-                    </a>
-                  </div>
-                </div>
-                <div className="order-1 aspect-[4/3] overflow-hidden bg-bone md:order-2 md:aspect-auto md:min-h-[420px]">
-                  <img src={img.trade} alt="Iconica Design interior" loading="lazy" decoding="async" className="h-full w-full object-cover" />
-                </div>
-              </section>
               <BlogSection />
-              <HomeEditSection />
               <InstagramSection />
             </>
           )}
