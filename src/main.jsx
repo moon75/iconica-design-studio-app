@@ -970,7 +970,71 @@ function ProductPage({ product }) {
 
 const blogPosts = [
   {
-    slug: 'introducing-the-latch-key',
+    slug: 'signs-its-time-to-refresh-your-space',
+    title: "Signs It's Time to Refresh Your Space",
+    category: 'Studio Notes',
+    date: 'May 2026',
+    author: 'Iconica Design',
+    readTime: '5 min read',
+    excerpt:
+      'A look at the quiet signals that suggest your home or workspace may be ready for a thoughtful refresh — and what to do about them.',
+    image: '/images/blog-1-image.jpg',
+    body: [
+      "Sometimes a space stops feeling aligned with the way you live or work and that feeling can be difficult to put into words. Maybe the layout no longer supports your routine, the lighting feels dull, or the overall atmosphere feels disconnected from your style, lifestyle, or brand. Even when everything still functions, a space can begin to feel heavy, uninspiring, or simply no longer reflective of where you are today.",
+      "We believe your environment should be a reflection of you. Our ethos is simple: fill a space with things you love, because when a space is rooted in meaning and intention, it grows alongside you. The most meaningful interiors are not created around trends — they are thoughtfully shaped around the people who live, work, gather, and create within them.",
+      "If you've been wondering whether your space may be ready for a refresh, here are a few signs we often see:",
+      "## 1. You're constantly trying to make the space feel right",
+      "Rearranging furniture, layering in décor, or making small adjustments that never fully solve the issue often points to something deeper. Sometimes it is not about needing more, but about creating better flow, balance, and intention within the space.",
+      "## 2. Certain areas feel overlooked or underused",
+      "When parts of a home, workplace, or hospitality environment no longer invite you in or support the way you move and gather, it may be a sign the space is no longer functioning as well as it could. Thoughtful design should create ease and support everyday experience.",
+      "## 3. The space no longer reflects who you are today",
+      "Our lives evolve and our environments should be able to evolve with us. What once felt aligned may now feel disconnected from your current lifestyle, needs, or brand identity. Often, a refresh is less about reinvention and more about realignment.",
+      "Refreshing a space does not always mean starting from scratch. Some of the most meaningful transformations come through intentional refinements — improving layout, enhancing lighting, introducing new materials, or creating stronger visual balance.",
+      "Our goal is never simply to make a space look better. It is to help create environments that feel thoughtful, functional, and deeply aligned with the way you live, work, and experience daily life.",
+      "At Iconica Design, every project is approached with a focus on atmosphere, storytelling, and timeless design. Whether it's a hospitality environment, a commercial interior, or a private residence, the right design can elevate everyday experiences and create spaces that truly feel connected to the people who use them.",
+    ],
+  },
+  {
+    slug: 'designing-with-intention-timeless-materials',
+    title: 'Designing With Intention: Why Timeless Materials Matter',
+    category: 'Materials',
+    date: 'May 2026',
+    author: 'Iconica Design',
+    readTime: '7 min read',
+    excerpt:
+      'Sustainable design is not a trend. A look at honest materials, longevity, and why we keep returning to cement, terrazzo, and natural wood.',
+    image: '/images/blog-2-image.jpg',
+    body: [
+      "Sustainable design is often spoken about as a trend, but to us, it is something much deeper. It is about creating spaces with intention — spaces that feel beautiful, grounded, and built to last.",
+      "At Iconica Design, we are seeing more clients move away from fast-changing trends and toward materials that carry a sense of permanence, warmth, and authenticity. Not because sustainability is fashionable, but because people are craving spaces that feel more connected, more thoughtful, and more reflective of how they want to live.",
+      "For us, sustainable design is not about following strict rules or creating spaces that feel overly curated or untouchable. It is about making mindful choices — choosing materials that age beautifully, serve a purpose, and continue to tell their story over time.",
+      "## Designing Beyond Trends",
+      "One of the biggest shifts we are seeing in design is a movement toward longevity.",
+      "For years, interiors often followed a cycle of constant replacement — chasing trends that looked beautiful for a season but quickly felt dated or disconnected. Today, many people are approaching their spaces differently. They are investing more thoughtfully, selecting fewer but better pieces, and prioritizing materials that offer both beauty and durability.",
+      "We believe this shift is less about minimalism and more about intention. When materials are selected thoughtfully, a space naturally feels more layered, timeless, and personal.",
+      "Rather than asking what is trending, we encourage clients to ask: Will this material age well? Does it feel authentic to the space? Will it continue to support how I live or work years from now? Does it create the atmosphere I want to experience daily?",
+      "These questions often lead to stronger and more enduring design decisions.",
+      "## The Beauty of Honest Materials",
+      "At Iconica Design, we are consistently drawn to materials that feel honest and tactile — materials that reveal their texture, variation, and character rather than hiding it.",
+      "Natural wood with organic finishes remains one of our favorites. It brings warmth, softness, and timelessness while developing richness and patina over time. No two pieces are exactly alike, and that natural variation creates depth and authenticity within a space.",
+      "We are equally drawn to handmade and textural materials: recycled stone, linen fabrics, handmade tile, limewash finishes, and surfaces that feel collected rather than manufactured.",
+      "And then there are the materials we continue returning to again and again: cement and terrazzo.",
+      "There is something grounding about cement. Its quiet texture, natural movement, and understated character create a sense of calm and permanence. Whether incorporated through flooring, plaster finishes, architectural details, or custom elements, cement introduces a raw sophistication that feels both contemporary and timeless.",
+      "Terrazzo offers a different kind of expression — equally enduring, yet playful in its composition. We love the way terrazzo introduces movement and subtle patterns while still feeling architectural and refined. Its layered surface carries depth and personality without overwhelming a space, making it a material that feels both artistic and enduring.",
+      "These materials do not seek perfection — and that is exactly what makes them beautiful. Their variation, texture, and ability to wear gracefully allow interiors to feel lived-in rather than overly designed.",
+      "## Sustainability Through Longevity",
+      "We believe sustainable design extends beyond recycled content or eco-conscious sourcing — although those considerations certainly matter. Sustainability also lives in longevity.",
+      "A thoughtfully designed space should not need to be reinvented every few years. When interiors are built around durable materials, timeless furnishings, and strong foundational design, they naturally evolve with the people living and working within them.",
+      "This philosophy aligns closely with our studio ethos: fill a space with things you love, because when a space is rooted in meaning and intention, it grows with you.",
+      "That might mean investing in quality materials that improve with age, selecting furnishings designed to last, or creating a layout that supports changing routines and evolving lifestyles. The goal is not perfection. It is creating spaces that remain relevant, functional, and deeply personal over time.",
+      "## Thoughtful Spaces, Lasting Stories",
+      "At Iconica Design, sustainability and timeless design go hand in hand.",
+      "We believe the most successful interiors are not simply beautiful on day one. They are the spaces that continue to feel aligned years later — spaces that age gracefully, support everyday living, and carry a sense of story and permanence.",
+      "Because good design is not just about what a space looks like. It is about how thoughtfully it was created, how intentionally it functions, and how beautifully it continues to live over time.",
+    ],
+  },
+  {
+    __removed: 'introducing-the-latch-key',
     title: 'Introducing The Latch Key: Forms That Hold Presence',
     category: 'Objects',
     date: 'May 2026',
@@ -1181,10 +1245,19 @@ function BlogPostPage({ post }) {
               Back to Blog
             </a>
           </aside>
-          <div className="max-w-[640px] space-y-5 text-[14px] font-normal leading-6 text-ink/70">
-            {post.body.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
+          <div className="max-w-[640px] text-[14px] font-normal leading-6 text-ink/70">
+            {post.body.map((item, index) => {
+              if (item.startsWith('## ')) {
+                return (
+                  <h2 key={index} className="mt-8 mb-3 font-serif text-[16px] font-normal leading-[1.4] tracking-[0.02em] text-ink first:mt-0">
+                    {item.slice(3)}
+                  </h2>
+                )
+              }
+              return (
+                <p key={index} className="mt-5 first:mt-0">{item}</p>
+              )
+            })}
           </div>
         </div>
       </section>
