@@ -33,11 +33,12 @@ const img = {
 }
 
 const nav = [
-  { label: 'PORTFOLIO', href: '/portfolio' },
-  { label: 'PRESS', href: '/press' },
-  { label: 'BLOG', href: '/blog' },
+  { label: 'STUDIO', href: '/studio', children: [
+    { label: 'PRESS', href: '/press' },
+    { label: 'THE JOURNAL', href: '/blog' },
+  ]},
   { label: 'SERVICES', href: '/services' },
-  { label: 'STUDIO', href: '/studio' },
+  { label: 'PORTFOLIO', href: '/portfolio' },
   { label: 'CONTACT', href: '/contact' },
 ]
 
@@ -534,16 +535,31 @@ function Header() {
 
   return (
     <header className="fixed left-0 right-0 top-0 z-30 bg-[#fbfaf7]/95 text-[#2b2a26] backdrop-blur">
-      <div className="flex h-[56px] w-full items-center gap-3 px-4 sm:h-[62px] sm:gap-4 sm:px-7 lg:px-10">
+      <div className="relative flex h-[56px] w-full items-center gap-3 px-4 sm:h-[62px] sm:gap-4 sm:px-7 lg:px-10">
         <a href="/" className="min-w-0 flex-1 truncate font-serif text-[14px] font-normal uppercase tracking-[0.1em] text-ink sm:text-[16px] md:text-[17px] lg:flex-none">
           ICONICA DESIGN
         </a>
-        <nav className="hidden flex-1 flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] font-normal uppercase tracking-[0.12em] text-ink/65 lg:flex xl:gap-x-6 xl:text-[12px] xl:tracking-[0.14em]">
-          {nav.map((item) => (
-            <a key={item.label} href={item.href} className="whitespace-nowrap hover:text-ink hover:underline hover:underline-offset-4">
-              {item.label}
-            </a>
-          ))}
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] font-normal uppercase tracking-[0.12em] text-ink/65 lg:flex xl:gap-x-6 xl:text-[12px] xl:tracking-[0.14em]">
+          {nav.map((item) =>
+            item.children ? (
+              <div key={item.label} className="group relative">
+                <a href={item.href} className="whitespace-nowrap hover:text-ink hover:underline hover:underline-offset-4">
+                  {item.label}
+                </a>
+                <div className="absolute left-1/2 top-full hidden min-w-[140px] -translate-x-1/2 flex-col border border-ink/10 bg-[#fbfaf7] py-1.5 shadow-sm group-hover:flex">
+                  {item.children.map((child) => (
+                    <a key={child.label} href={child.href} className="px-4 py-2 text-[10px] tracking-[0.14em] whitespace-nowrap hover:text-ink hover:bg-ink/5">
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a key={item.label} href={item.href} className="whitespace-nowrap hover:text-ink hover:underline hover:underline-offset-4">
+                {item.label}
+              </a>
+            )
+          )}
         </nav>
         <button
           className="ml-auto lg:hidden"
@@ -553,7 +569,7 @@ function Header() {
         >
           {mobileMenuOpen ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
         </button>
-        <div className="hidden shrink-0 items-center justify-end gap-4 text-ink/75 md:flex">
+        <div className="ml-auto hidden shrink-0 items-center justify-end gap-4 text-ink/75 md:flex">
           <a href="/contact" aria-label="Account">
             <UserRound size={19} strokeWidth={1.6} />
           </a>
@@ -562,9 +578,16 @@ function Header() {
       {mobileMenuOpen && (
         <nav className="grid border-t border-ink/10 bg-[#fbfaf7]/98 px-5 py-3 text-[11px] uppercase tracking-[0.16em] lg:hidden">
           {nav.map((item) => (
-            <a key={item.label} href={item.href} className="border-b border-ink/10 py-3 last:border-b-0" onClick={() => setMobileMenuOpen(false)}>
-              {item.label}
-            </a>
+            <React.Fragment key={item.label}>
+              <a href={item.href} className="border-b border-ink/10 py-3 last:border-b-0" onClick={() => setMobileMenuOpen(false)}>
+                {item.label}
+              </a>
+              {item.children && item.children.map((child) => (
+                <a key={child.label} href={child.href} className="border-b border-ink/10 py-2.5 pl-5 text-[10px] text-ink/50 last:border-b-0" onClick={() => setMobileMenuOpen(false)}>
+                  — {child.label}
+                </a>
+              ))}
+            </React.Fragment>
           ))}
         </nav>
       )}
@@ -578,7 +601,7 @@ function Hero() {
       <img src={img.hero} alt="Iconica Design interior project" decoding="async" fetchPriority="high" className="hero-image absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-black/50" />
       <div className="relative mx-auto flex min-h-[460px] max-w-[1480px] items-center justify-center px-5 text-center text-white sm:min-h-[560px] sm:px-8 md:min-h-[680px] md:px-10 lg:min-h-[760px]">
-        <div className="image-copy max-w-[760px]">
+        <div className="image-copy max-w-[760px] -translate-y-20">
           <div className="hero-rise">
             <h1 className="font-serif text-[15px] font-normal uppercase leading-[1.45] tracking-[0.08em] sm:text-[16px] md:text-[17px]">
               WELCOME TO ICONICA DESIGN
@@ -586,6 +609,7 @@ function Hero() {
             <p className="mt-3 text-[12px] font-normal uppercase leading-[1.5] tracking-[0.08em] sm:text-[13px] md:text-[14px]">
               COMMERCIAL & RESIDENTIAL INTERIOR DESIGN STUDIO
             </p>
+            <span className="mt-2 block h-px w-full bg-white/60" />
           </div>
         </div>
       </div>
@@ -1091,8 +1115,8 @@ function BlogSection() {
   return (
     <section className="border-b border-ink bg-[#fbfaf7] px-5 py-10 sm:px-8 md:px-12 md:py-14">
       <div className="mx-auto max-w-[1100px]">
-        <div className="mb-7 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-baseline md:mb-9">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-olive">FROM THE STUDIO</p>
+        <div className="mb-7 flex items-baseline justify-between md:mb-9">
+          <h2 className="font-serif text-[28px] font-normal leading-tight text-ink sm:text-[34px] md:text-[40px]">Read The Blog</h2>
           <a href="/blog" className="text-[10px] uppercase tracking-[0.2em] underline underline-offset-4">
             Read the Blog
           </a>
@@ -1158,6 +1182,7 @@ function BlogPage() {
           </div>
         </div>
       </section>
+      <ImageCallout image={img.edit} title="START A PROJECT" text="Tell us about your project and we'll be in touch within 24 hours to arrange a call." align="right" height="short" href="/contact" cta="CONTACT THE STUDIO" />
     </>
   )
 }
@@ -1892,6 +1917,7 @@ function App() {
                 align="right"
               />
               <BlogSection />
+              <ImageCallout image={img.edit} title="START A PROJECT" text="Tell us about your project and we'll be in touch within 24 hours to arrange a call." align="right" height="short" href="/contact" cta="CONTACT THE STUDIO" />
               <InstagramSection />
             </>
           )}
